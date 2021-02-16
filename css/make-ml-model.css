@@ -1,18 +1,43 @@
 @import url('https://fonts.googleapis.com/css?family=Chivo|Lora|Space+Mono:700&display=swap');
 
+:root {
+  /* define colours for elements */
+  --bgbody: lightgray;
+  --bghover: lightslategray;
+  --outline: darkslategray;
+  --warm: ivory;
+  --pop: coral;
+  --fade: gainsboro;
+  --button: cadetblue;
+}
+
 body,
 h1, h2, h3, h4, h5, h6, p,
 ol, ul, li, blockquote
 {
-	margin: 10px;
-	padding: 10px;
-	line-height: 130%;
+  margin: 10px;
+  padding: 10px;
+  line-height: 130%;
+}
+
+button {
+  background-color: var(--button);
+  border: outset;
+  border-radius: 5px;
+  color: black;
+  padding: 15px;
+  margin: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  font-family: "Chivo";
 }
 
 body {
   font-size: 100%;
   font-family: Chivo;
-  height: 2048px;
 }
 
 h1 {
@@ -58,67 +83,9 @@ html {
 }
 
 .logo {
-  float: right;
-  width: 150px;
-  margin-right: 10px;
-}
-
-/*le style du cercle qui sert de zone pour déposer le carré*/
-.dropzone {
-	width: 100%;
-  border-width: 0.5px;
-  border-style: solid;
-  border-color: gray;
-  background-color: darkgray;
-	z-index: -1;
-}
-
-/*le carré change de couleur quand il survol le cercle*/
-.drag-drop {
-	width: 150px;
-  margin: 2px;
-  color: #fff;
-  transition: background-color 0.3s;
-	text-align: center;
-	transition: border-radius .1s;
-}
-
-.drag-drop.can-drop {
-  color: #000;
-  background-color: #FC6E5E;
-}
-
-/*le carré devient un cercle*/
-.drop-ok {
-	border-radius: 50%;
-}
-
-@media screen and (max-width: 750px) {
-	.dropzone {
-		width: 100%;
-		height: 100%;
-		margin-top: 20%;
-	}
-
-  .canvas {
-    width: 100%;
-  }
-
-	.drag-drop {
-	width: 90px;
-	height: 90px;
-	}
-}
-
-#container {
-  width: 100%;
-  background-color: #333;
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  overflow: hidden;
-  border-radius: 7px;
-  touch-action: none;
+    float: right;
+    width: 150px;
+    margin-right: 10px;
 }
 
 #decision-tree-wrapper {
@@ -147,6 +114,63 @@ html {
   z-index: 1000;
 }
 
+/*le style du cercle qui sert de zone pour déposer le carré*/
+.dropzone {
+  width: 100%;
+  border-width: 0.5px;
+  border-style: solid;
+  border-color: gray;
+  background-color: var(--bgbody);
+  z-index: -1;
+}
+
+/*le carré change de couleur quand il survol le cercle*/
+.drag-drop {
+  width: 150px;
+  color: #fff;
+  transition: background-color 0.3s;
+  text-align: center;
+  transition: border-radius .1s;
+}
+
+.drag-drop.can-drop {
+  color: #000;
+  background-color: #FC6E5E;
+}
+
+/*le carré devient un cercle*/
+.drop-ok {
+  border-radius: 50%;
+}
+
+@media screen and (max-width: 750px) {
+  .dropzone {
+    width: 100%;
+    height: 100%;
+    margin-top: 20%;
+  }
+
+  .canvas {
+    width: 100%;
+  }
+
+  .drag-drop {
+  width: 90px;
+  height: 90px;
+  }
+}
+
+#container {
+  width: 100%;
+  background-color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  overflow: hidden;
+  border-radius: 7px;
+  touch-action: none;
+}
+
 .item:active {
   opacity: .75;
 }
@@ -158,7 +182,7 @@ html {
 .flex-container {
   display: flex;
   flex-wrap: nowrap;
-	align-items: center;
+  align-items: center;
 }
 
 .flex-container .box {
@@ -166,8 +190,29 @@ html {
   max-width: 50%;
   width: 50%;
   margin: 10px;
-	padding: 10px;
+  padding: 10px;
   text-align: left;
+}
+
+.flex-container .invisbox-nano {
+  background-color: var(--bgbody);
+  min-width: 7.125%;
+  width: 7.125%;
+  text-align: left;
+  padding: 0px;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-container .invisbox-tiny {
+  background-color: var(--bgbody);
+  min-width: 14.25%;
+  width: 14.25%;
+  max-width: 14.25%;
+  text-align: left;
+  padding: 0px;
+  align-items: center;
+  justify-content: center;
 }
 
 .flex-container .invisbox-small {
@@ -176,6 +221,18 @@ html {
   width: 33%;
   text-align: left;
   padding: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-container .invisbox-med {
+  background-color: var(--bgbody);
+  max-width: 42.75%;
+  width: 42.75%;
+  text-align: left;
+  padding: 0px;
+  align-items: center;
+  justify-content: center;
 }
 
 .flex-container .invisbox {
@@ -184,7 +241,7 @@ html {
   width: 50%;
   text-align: left;
   padding: 10px;
-	align-items: center;
+  align-items: center;
   justify-content: center;
 }
 
@@ -192,6 +249,14 @@ html {
   background-color: var(--bgbody);
   max-width: 67%;
   width: 67%;
+  text-align: left;
+  padding: 10px;
+}
+
+.flex-container .invisbox-fill {
+  background-color: var(--bgbody);
+  max-width: 22%;
+  width: 22%;
   text-align: left;
   padding: 10px;
 }
@@ -206,14 +271,14 @@ html {
   display: flex;
   flex-wrap: wrap;
   padding: 0 4px;
-	height: 450px;
+  height: 450px;
 }
 
 .row img {
   margin: 4px;
   vertical-align: top;
   width: 100%;
-	border: 2px outset gray;
+  border: 2px outset gray;
 
 /* Create ten equal columns that sit next to each other */
 .column {
@@ -226,7 +291,12 @@ html {
   margin: 4px;
   vertical-align: top;
   width: 100%;
-	border: 3px solid black;
+  border: 3px solid black;
+}
+
+.form .input[type=text] {
+  background-color: coral;
+  color: white;
 }
 
 /* Responsive layout - makes a two column-layout instead of four columns */
