@@ -23,6 +23,12 @@ h1 {
   padding-bottom: 30px;
 }
 
+.logo {
+  float: right;
+  width: 150px;
+  margin-right: 10px;
+}
+
 h2 {
   color: black;
   font-size:1.5em;
