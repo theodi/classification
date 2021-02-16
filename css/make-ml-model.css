@@ -23,12 +23,6 @@ h1 {
   padding-bottom: 30px;
 }
 
-.logo {
-  float: right;
-  width: 150px;
-  margin-right: 10px;
-}
-
 h2 {
   color: black;
   font-size:1.5em;
@@ -61,6 +55,12 @@ html {
   margin: auto;
   #background: #eee; /* Fills the page */
   position: center; /* Fix for absolute positioning */
+}
+
+.logo {
+  float: right;
+  width: 150px;
+  margin-right: 10px;
 }
 
 /*le style du cercle qui sert de zone pour déposer le carré*/
@@ -121,6 +121,17 @@ html {
   touch-action: none;
 }
 
+#decision-tree-wrapper {
+  min-width: 40%;
+  max-width: 72%;
+  width: 61%;
+  display: inline-block;
+  float: right;
+}
+#training-set {
+  max-width: 468px;
+  display: inline-block;
+}
 #training-set .drag-drop {
   z-index: 1000;
 }

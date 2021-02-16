@@ -11,6 +11,8 @@ card {
 	border: 1px solid black;
 	background-color: white;
 	z-index: 1000;
+	padding-top: 6px;
+	padding-bottom: 6px;
 }
 card button {
 	margin-top: 1em;
@@ -29,14 +31,14 @@ img {
 .target {
 	float: left;
 	display: inline-block;
-	font-size: 0.5em;
+	font-size: 0.35em;
 	padding-top: 0;
 	padding-bottom: 0;
 }
 .number {
 	float: right;
 	position: relative;
-	font-size: 0.5em;
+	font-size: 0.35em;
 	padding-top: 0;
 	padding-bottom: 0;
 }
