@@ -15,7 +15,7 @@
 
 <body>
   <img src="img/learning-72-Pink-300px.png" class="logo"/>
-  <h3>Building a simple decision tree<br/><span style="font-size: 0.6em;">( <a style="text-decoration:underline;" href="" onClick="viewInstructions()">View Instructions</a> | <a id="groupcsv" style="text-decoration:underline;" href="data/csvs/Group_1.csv">Download card data (csv)</a> | <a id="grouppdf" style="text-decoration:underline;" href="data/Group_1.pdf">Download cards (pdf)</a> )</span></h3>
+  <h3>Build and test your own decision tree model<br/><span style="font-size: 0.6em;">( <a style="text-decoration:underline;" href="" onClick="viewInstructions()">View Instructions</a> | <a id="groupcsv" style="text-decoration:underline;" href="data/csvs/Group_1.csv">Download card data (csv)</a> | <a id="grouppdf" style="text-decoration:underline;" href="data/Group_1.pdf">Download cards (pdf)</a> )</span></h3>
   <!-- main flex container -->
   <!-- cards -->
   <div id="cards-wrapper">
@@ -36,6 +36,13 @@
   </div>
   
     <div class="invisbox-big" id="decision-tree-wrapper">
+    <div class="switch-wrapper" style="text-align: right;">
+    <span style="color:black;">Enable drag</span>
+    <label class="switch" value="Enable Drag">
+      <input id="myCheck" type="checkbox" onclick="toggleDrag()">
+      <span class="slider round"></span>
+    </label>
+    <div>
     <div id="canvas" class="dropzone" style="width: 100%; height: 100%; margin: auto;">
       <div style="margin: auto;">
         <svg style="display:none;">
