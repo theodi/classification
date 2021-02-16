@@ -77,8 +77,9 @@
             <div class="flex-container">
             <div class="invisbox-tiny">
             </div>
-            <div class="invisbox-tiny">
-              <input type="text" placeholder="condition1a" id="condition1A" name="condition1A"><br>
+            <div class="invisbox-tiny condition-left">
+              <label for="condition1a">&lt;=</label>
+              <input type="text" placeholder="condition1a" id="condition1a" name="condition1a" style="max-width: 70%;">
             </div>
             <div class="invisbox-tiny">
               <img src="../classification/elements/neat-arrow-left.svg" width="100%"/>
@@ -88,8 +89,9 @@
             <div class="invisbox-tiny">
               <img src="../classification/elements/neat-arrow-right.svg" width="100%"/>
             </div>
-            <div class="invisbox-tiny">
-              <input type="text" placeholder="condition1b" id="condition1B" name="condition1B"><br>
+            <div class="invisbox-tiny condition-right">
+              <label for="condition1b" style="font-size: 1.4em;">&gt;</label>
+              <input disabled type="text" placeholder="condition1b" id="condition1b" name="condition1b" style="max-width: 70%; background-color: silver;">
             </div>
             <div class="invisbox-tiny">
             </div>
@@ -179,23 +181,27 @@
       </div>
       <!-- ROW 6 -->
       <div class="flex-container">
-      <div class="invisbox-tiny">
-        <input type="text" placeholder="condition2aa" id="condition2AA" name="condition2AA"><br>
+      <div class="invisbox-tiny condition">
+        <label for="condition2aa">&lt;=</label>
+        <input type="text" placeholder="condition2aa" id="condition2aa" name="condition2aa" style="max-width: 70%;">
       </div>
       <div class="invisbox-tiny">
       </div>
-      <div class="invisbox-tiny">
-        <input type="text" placeholder="condition2ab" id="condition2AB" name="condition2AB"><br>
+      <div class="invisbox-tiny condition">
+        <label for="condition2ab">&gt;</label>
+        <input disabled type="text" placeholder="condition2ab" id="condition2ab" name="condition2ab" style="max-width: 70%; background-color: silver">
       </div>
       <div class="invisbox-tiny">
       </div>
-      <div class="invisbox-tiny">
-        <input type="text" placeholder="condition2ba" id="condition2BA" name="condition2BA"><br>
+      <div class="invisbox-tiny condition">
+        <label for="condition2ba">&lt;=</label>
+        <input type="text" placeholder="condition2ba" id="condition2ba" name="condition2ba" style="max-width: 70%;">
       </div>
       <div class="invisbox-tiny">
       </div>
-      <div class="invisbox-tiny">
-        <input type="text" placeholder="condition2bb" id="condition2BB" name="condition2BB"><br>
+      <div class="invisbox-tiny condition">
+        <label for="condition2bb">&gt;</label>
+        <input disabled type="text" placeholder="condition2bb" id="condition2bb" name="condition2bb" style="max-width: 70%; background-color: silver">
       </div>
     </div>
     <!-- ROW 7 -->
@@ -275,6 +281,10 @@
     getBlueCards(group,"blue");
     document.getElementById("groupcsv").href="data/csvs/Group_" + group + ".csv"; 
     document.getElementById("grouppdf").href="data/pdfs/Group_" + group + ".pdf"; 
+
+    $('#condition1a').on('change', onchange);
+    $('#condition2aa').on('change', onchange);
+    $('#condition2ba').on('change', onchange);
   });
 </script>
 

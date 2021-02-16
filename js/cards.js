@@ -139,3 +139,17 @@ function processNumber(val) {
 function viewInstructions(){
     alert("Classification Game \n\n You have 20 blue cards:\n 10 give information about properties in San Francisco \n 10 give information about properties in New York \n\nYour challenge is to use this data to inform the building of a decision tree that can classify cards where the city is unknown. \n\nYou can rearrange the cards within the panel by dragging them. \n\nPlease design your decision tree in the panel available. \n\nYou can also download the blue card data as csv containing the data that you can open in Excel if you feel it would help. \n\nWhen you have finished building your tree, you can select your own evaluation cards to see if it works. \n\nGood luck!");
 }
+
+function onchange() {
+    var condition1a = $('#condition1a');
+    var condition1b = $('#condition1b');
+    condition1b.val(condition1a.val());
+
+    var condition2aa = $('#condition2aa');
+    var condition2ab = $('#condition2ab');
+    condition2ab.val(condition2aa.val());
+
+    var condition2ba = $('#condition2ba');
+    var condition2bb = $('#condition2bb');
+    condition2bb.val(condition2ba.val());
+}
