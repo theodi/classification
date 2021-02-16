@@ -136,6 +136,10 @@ function processNumber(val) {
     }
 }
 
+function viewInstructions(){
+    alert("Classification Game \n\n You have 20 blue cards:\n 10 give information about properties in San Francisco \n 10 give information about properties in New York \n\nYour challenge is to use this data to inform the building of a decision tree that can classify cards where the city is unknown. \n\nYou can rearrange the cards within the panel by dragging them. \n\nPlease design your decision tree in the panel available. \n\nYou can also download the blue card data as csv containing the data that you can open in Excel if you feel it would help. \n\nWhen you have finished building your tree, you can add red cards by pressing 'e' on your keyboard. \n\nGood luck!");
+}
+
 window.addEventListener('keydown', function (e) {
     if ( e.key == "e" ) {
         startInput();
