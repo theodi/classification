@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="css/make-ml-model.css"/>
   <link rel="stylesheet" href="css/svg-form.css"/>
   <link rel="stylesheet" href="css/switch.css"/>
+  <link rel="stylesheet" href="css/red.css"/>
+  <script src="js/d3.v5.min.js"></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.0.2/interact.min.js'></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
@@ -14,6 +16,7 @@
 <body>
   <h3>Building a simple decision tree</h3>
   <!-- main flex container -->
+  <cards></cards>
   <div class='flex-container'>
     <!-- cards -->
     <div id='training-set' class='invisbox-small' style="width: 100%; height: 1000px; padding: 0;">
@@ -295,5 +298,11 @@
 </body>
 <script src="js/make-ml-model.js"></script>
 <script src="js/switch.js"></script>
+<script src="js/cards.js"></script>
+<script type="text/javascript">
+  var redCount = 0;
+  var redDone = [];
+  var maxRedCount = 20;
+</script>
 
 </html>
