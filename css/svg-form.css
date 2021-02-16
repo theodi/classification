@@ -28,7 +28,8 @@ a {
 }
 
 input,
-textarea {
+textarea, 
+select {
   font-family: inherit;
   font-size: 100%;
   color: darkslategray;

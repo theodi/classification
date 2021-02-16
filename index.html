@@ -56,7 +56,16 @@
               <div class="invisbox-tiny">
               </div>
               <div class="invisbox-tiny">
-                <input type="text" placeholder="factor1" id="factor1" name="factor1"><br>
+                <select id="factor1" name="factor1">
+                  <option value="" disabled selected>Select factor</option>
+                  <option value="Bathrooms">Bathrooms</option>
+                  <option value="Bedrooms">Bedrooms</option>
+                  <option value="Year built">Year built</option>
+                  <option value="Elevation">Elevation</option>
+                  <option value="Square Footage">Square Footage</option>
+                  <option value="Price">Price</option>
+                  <option value="Price per sqft">Price per sqft</option>
+                </select>
               </div>
               <div class="invisbox-tiny">
                 <img src="../classification/elements/decision.svg" width="100%"/>
@@ -111,7 +120,16 @@
         <!-- ROW 4 -->
           <div class="flex-container">
           <div class="invisbox-tiny">
-            <input type="text" placeholder="factor2a" id="factor2A" name="factor2A"><br>
+            <select id="factor2a" name="factor2b">
+                  <option value="" disabled selected>Select factor (optional)</option>
+                  <option value="Bathrooms">Bathrooms</option>
+                  <option value="Bedrooms">Bedrooms</option>
+                  <option value="Year built">Year built</option>
+                  <option value="Elevation">Elevation</option>
+                  <option value="Square Footage">Square Footage</option>
+                  <option value="Price">Price</option>
+                  <option value="Price per sqft">Price per sqft</option>
+            </select>
           </div>
           <div class="invisbox-tiny">
             <img src="../classification/elements/decision.svg" width="100%"/>
@@ -121,7 +139,16 @@
           <div class="invisbox-tiny">
           </div>
           <div class="invisbox-tiny">
-            <input type="text" placeholder="factor2b" id="factor2B" name="factor2B"><br>
+            <select id="factor2b" name="factor2b">
+                  <option value="" disabled selected>Select factor (optional)</option>
+                  <option value="Bathrooms">Bathrooms</option>
+                  <option value="Bedrooms">Bedrooms</option>
+                  <option value="Year built">Year built</option>
+                  <option value="Elevation">Elevation</option>
+                  <option value="Square Footage">Square Footage</option>
+                  <option value="Price">Price</option>
+                  <option value="Price per sqft">Price per sqft</option>
+            </select>
           </div>
           <div class="invisbox-tiny">
             <img src="../classification/elements/decision.svg" width="100%"/>
@@ -250,6 +277,5 @@
     document.getElementById("grouppdf").href="data/pdfs/Group_" + group + ".pdf"; 
   });
 </script>
-
 
 </html>
