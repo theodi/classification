@@ -12,6 +12,7 @@ ol, ul, li, blockquote
 body {
   font-size: 100%;
   font-family: Chivo;
+  height: 2048px;
 }
 
 h1 {
@@ -69,7 +70,7 @@ html {
 /*le carré change de couleur quand il survol le cercle*/
 .drag-drop {
 	width: 150px;
-	height: 150px;
+  margin: 2px;
   color: #fff;
   transition: background-color 0.3s;
 	text-align: center;
@@ -112,6 +113,10 @@ html {
   overflow: hidden;
   border-radius: 7px;
   touch-action: none;
+}
+
+#training-set .drag-drop {
+  z-index: 1000;
 }
 
 .item:active {

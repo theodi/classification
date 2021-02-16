@@ -4,8 +4,9 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <title>Build a decision tree</title>
-  <link rel="stylesheet" href="make-ml-model.css"/>
-  <link rel="stylesheet" href="svg-form.css"/>
+  <link rel="stylesheet" href="css/make-ml-model.css"/>
+  <link rel="stylesheet" href="css/svg-form.css"/>
+  <link rel="stylesheet" href="css/switch.css"/>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.0.2/interact.min.js'></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
@@ -81,7 +82,14 @@
       </div>
 
   <!-- decision tree interaction zone -->
-  <div class="invisbox-big">
+  <div class="invisbox-big" id="decision-tree-wrapper">
+    <div class="switch-wrapper" style="text-align: right;">
+    <span style="color:black;">Enable drag</span>
+    <label class="switch" value="Enable Drag">
+      <input id="myCheck" type="checkbox" onclick="toggleDrag()">
+      <span class="slider round"></span>
+    </label>
+    <div>
     <div id="canvas" class="dropzone" style="width: 100%; height: 100%; margin: auto;">
       <div style="margin: auto;">
         <!-- svg -->
@@ -285,6 +293,7 @@
 
 
 </body>
-<script src="make-ml-model.js"></script>
+<script src="js/make-ml-model.js"></script>
+<script src="js/switch.js"></script>
 
 </html>
