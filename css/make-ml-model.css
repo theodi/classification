@@ -128,9 +128,20 @@ html {
   display: inline-block;
   float: right;
 }
-#training-set {
+#cards-wrapper {
   max-width: 468px;
   display: inline-block;
+  z-index: 1000;
+}
+#training-set {
+  min-width: 468px;
+  min-height: 1000px;
+  border: 1px solid blue;
+}
+#evaluation-set {
+  min-width: 468px;
+  min-height: 1000px;
+  border: 1px solid red;
 }
 #training-set .drag-drop {
   z-index: 1000;

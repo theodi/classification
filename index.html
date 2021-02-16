@@ -15,11 +15,24 @@
 
 <body>
   <img src="img/learning-72-Pink-300px" class="logo"/>
-  <h3>Building a simple decision tree <span style="font-size: 0.6em;">( <a style="text-decoration:underline;" href="" onClick="viewInstructions()">View Instructions</a> | <a id="groupcsv" style="text-decoration:underline;" href="data/csvs/Group_1.csv">Download card data (csv)</a> | <a id="grouppdf" style="text-decoration:underline;" href="data/Group_1.pdf">Download cards (pdf)</a> )</span></h3>
+  <h3>Building a simple decision tree<br/><span style="font-size: 0.6em;">( <a style="text-decoration:underline;" href="" onClick="viewInstructions()">View Instructions</a> | <a id="groupcsv" style="text-decoration:underline;" href="data/csvs/Group_1.csv">Download card data (csv)</a> | <a id="grouppdf" style="text-decoration:underline;" href="data/Group_1.pdf">Download cards (pdf)</a> )</span></h3>
   <!-- main flex container -->
-  <cards></cards>
   <!-- cards -->
-  <div id='training-set' class='invisbox-small' style="">
+  <div id="cards-wrapper">
+    <div class="switch-wrapper" style="text-align: right;">
+    <span style="color:black;">Training set</span>
+    <label class="switch" value="Switch sets">
+      <input id="setSwitch" type="checkbox" onclick="toggleSet()">
+      <span class="slider round"></span>
+    </label>
+    <span style="color:black;">Evaluation set</span>
+    </div>
+    <div id='training-set' class='invisbox-small'></div>
+    <div id='evaluation-set' class="invisbox-small" style="display: none;">
+      <card id="evaluation-button" onClick="startInput()" style="margin: 2px;">
+        <h3>Add evaluation card</h3>
+      </card>
+    </div>
   </div>
 
   <!-- decision tree interaction zone -->
