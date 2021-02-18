@@ -63,15 +63,15 @@
               <div class="invisbox-tiny">
               </div>
               <div class="invisbox-tiny">
-                <select id="factor1" name="factor1">
+                <select id="factor_" name="factor">
                   <option value="" disabled selected>Select factor</option>
-                  <option value="Bathrooms">Bathrooms</option>
-                  <option value="Bedrooms">Bedrooms</option>
-                  <option value="Year built">Year built</option>
-                  <option value="Elevation">Elevation</option>
-                  <option value="Square Footage">Square Footage</option>
-                  <option value="Price">Price</option>
-                  <option value="Price per sqft">Price per sqft</option>
+                  <option value="bath">Bathrooms</option>
+                  <option value="beds">Bedrooms</option>
+                  <option value="year_built">Year built</option>
+                  <option value="elevation">Elevation</option>
+                  <option value="sqft">Square Footage</option>
+                  <option value="price">Price</option>
+                  <option value="price_per_sqft">Price per sqft</option>
                 </select>
               </div>
               <div class="invisbox-tiny">
@@ -85,8 +85,8 @@
             <div class="invisbox-tiny">
             </div>
             <div class="invisbox-tiny condition-left">
-              <label for="condition1a">&lt;=</label>
-              <input type="text" placeholder="condition1a" id="condition1a" name="condition1a" style="max-width: 70%;">
+              <label for="condition_a">&lt;=</label>
+              <input type="text" placeholder="condition_a" id="condition_a" name="condition_a" style="max-width: 70%;">
             </div>
             <div class="invisbox-tiny">
               <img src="../classification/elements/neat-arrow-left.svg" width="100%"/>
@@ -97,47 +97,31 @@
               <img src="../classification/elements/neat-arrow-right.svg" width="100%"/>
             </div>
             <div class="invisbox-tiny condition-right">
-              <label for="condition1b" style="font-size: 1.4em;">&gt;</label>
-              <input disabled type="text" placeholder="condition1b" id="condition1b" name="condition1b" style="max-width: 70%; background-color: silver;">
+              <label for="condition_b" style="font-size: 1.4em;">&gt;</label>
+              <input disabled type="text" placeholder="condition_b" id="condition_b" name="condition_b" style="max-width: 70%; background-color: silver;">
             </div>
             <div class="invisbox-tiny">
             </div>
           </div>
           <!-- ROW 3 ................................ -->
           <div class="flex-container">
-          <div class="invisbox-fill">
-            <textarea name="notes1" rows="4" cols="20">Write your notes here</textarea>
-          </div>
-          <div class="invisbox-fill">
-            <svg width="100%" height="300" preserveAspectRatio="none">
-              <rect width="100%" height="300" style="fill:silver;stroke-width:3;stroke:none" />
-              <text x="50%" y="50%" fill="white" dominant-baseline="middle" text-anchor="middle">CARDS</text>
-            </svg>
-          </div>
-          <div class="invisbox-tiny">
-          </div>
-          <div class="invisbox-fill">
-            <svg width="100%" height="300" preserveAspectRatio="none">
-              <rect width="100%" height="300" style="fill:silver;stroke-width:3;stroke:none" />
-              <text x="50%" y="50%" fill="white" dominant-baseline="middle" text-anchor="middle">CARDS</text>
-            </svg>
-          </div>
-          <div class="invisbox-fill">
-            <textarea name="notes2" rows="4" cols="20">Write your notes here</textarea>
+            <div id="box_l" class="cardbox" style="background-color: silver; width:100%;"></div>
+            <div class="invisbox-tiny"></div>
+            <div id="box_r" class="cardbox" style="background-color: silver; width:100%;"></div>
           </div>
         </div>
         <!-- ROW 4 -->
           <div class="flex-container">
           <div class="invisbox-tiny">
-            <select id="factor2a" name="factor2b">
+            <select id="factor_l" name="factor_l">
                   <option value="" disabled selected>Select factor (optional)</option>
-                  <option value="Bathrooms">Bathrooms</option>
-                  <option value="Bedrooms">Bedrooms</option>
-                  <option value="Year built">Year built</option>
-                  <option value="Elevation">Elevation</option>
-                  <option value="Square Footage">Square Footage</option>
-                  <option value="Price">Price</option>
-                  <option value="Price per sqft">Price per sqft</option>
+                  <option value="bath">Bathrooms</option>
+                  <option value="beds">Bedrooms</option>
+                  <option value="year_built">Year built</option>
+                  <option value="elevation">Elevation</option>
+                  <option value="sqft">Square Footage</option>
+                  <option value="price">Price</option>
+                  <option value="price_per_sqft">Price per sqft</option>
             </select>
           </div>
           <div class="invisbox-tiny">
@@ -148,15 +132,15 @@
           <div class="invisbox-tiny">
           </div>
           <div class="invisbox-tiny">
-            <select id="factor2b" name="factor2b">
+            <select id="factor_r" name="factor_r">
                   <option value="" disabled selected>Select factor (optional)</option>
-                  <option value="Bathrooms">Bathrooms</option>
-                  <option value="Bedrooms">Bedrooms</option>
-                  <option value="Year built">Year built</option>
-                  <option value="Elevation">Elevation</option>
-                  <option value="Square Footage">Square Footage</option>
-                  <option value="Price">Price</option>
-                  <option value="Price per sqft">Price per sqft</option>
+                  <option value="bath">Bathrooms</option>
+                  <option value="beds">Bedrooms</option>
+                  <option value="year_built">Year built</option>
+                  <option value="elevation">Elevation</option>
+                  <option value="sqft">Square Footage</option>
+                  <option value="price">Price</option>
+                  <option value="price_per_sqft">Price per sqft</option>
             </select>
           </div>
           <div class="invisbox-tiny">
@@ -189,55 +173,43 @@
       <!-- ROW 6 -->
       <div class="flex-container">
       <div class="invisbox-tiny condition">
-        <label for="condition2aa">&lt;=</label>
-        <input type="text" placeholder="condition2aa" id="condition2aa" name="condition2aa" style="max-width: 70%;">
+        <label for="condition_la">&lt;=</label>
+        <input type="text" placeholder="condition_la" id="condition_la" name="condition_la" style="max-width: 70%;">
       </div>
       <div class="invisbox-tiny">
       </div>
       <div class="invisbox-tiny condition">
-        <label for="condition2ab">&gt;</label>
-        <input disabled type="text" placeholder="condition2ab" id="condition2ab" name="condition2ab" style="max-width: 70%; background-color: silver">
+        <label for="condition_lb">&gt;</label>
+        <input disabled type="text" placeholder="condition_lb" id="condition_lb" name="condition_lb" style="max-width: 70%; background-color: silver">
       </div>
       <div class="invisbox-tiny">
       </div>
       <div class="invisbox-tiny condition">
-        <label for="condition2ba">&lt;=</label>
-        <input type="text" placeholder="condition2ba" id="condition2ba" name="condition2ba" style="max-width: 70%;">
+        <label for="condition_ra">&lt;=</label>
+        <input type="text" placeholder="condition_ra" id="condition_ra" name="condition_ra" style="max-width: 70%;">
       </div>
       <div class="invisbox-tiny">
       </div>
       <div class="invisbox-tiny condition">
-        <label for="condition2bb">&gt;</label>
-        <input disabled type="text" placeholder="condition2bb" id="condition2bb" name="condition2bb" style="max-width: 70%; background-color: silver">
+        <label for="condition_rb">&gt;</label>
+        <input disabled type="text" placeholder="condition_rb" id="condition_rb" name="condition_rb" style="max-width: 70%; background-color: silver">
       </div>
     </div>
     <!-- ROW 7 -->
       <div class="flex-container">
       <div class="invisbox-fill">
-        <svg width="100%" height="300" preserveAspectRatio="none">
-          <rect width="100%" height="300" style="fill:silver;stroke-width:3;stroke:none" />
-          <text x="50%" y="50%" fill="white" dominant-baseline="middle" text-anchor="middle">CARDS</text>
-        </svg>
+        <div id="box_ll" class="cardbox-thin" style="background-color: silver; width:100%;"></div>
       </div>
       <div class="invisbox-fill">
-        <svg width="100%" height="300" preserveAspectRatio="none">
-          <rect width="100%" height="300" style="fill:silver;stroke-width:3;stroke:none" />
-          <text x="50%" y="50%" fill="white" dominant-baseline="middle" text-anchor="middle">CARDS</text>
-        </svg>
+        <div id="box_lr" class="cardbox-thin" style="background-color: silver; width:100%;"></div>
       </div>
       <div class="invisbox-tiny">
       </div>
       <div class="invisbox-fill">
-        <svg width="100%" height="300" preserveAspectRatio="none">
-          <rect width="100%" height="300" style="fill:silver;stroke-width:3;stroke:none" />
-          <text x="50%" y="50%" fill="white" dominant-baseline="middle" text-anchor="middle">CARDS</text>
-        </svg>
+        <div id="box_rl" class="cardbox-thin" style="background-color: silver; width:100%;"></div>
       </div>
       <div class="invisbox-fill">
-        <svg width="100%" height="300" preserveAspectRatio="none">
-          <rect width="100%" height="300" style="fill:silver;stroke-width:3;stroke:none" />
-          <text x="50%" y="50%" fill="white" dominant-baseline="middle" text-anchor="middle">CARDS</text>
-        </svg>
+        <div id="box_rr" class="cardbox-thin" style="background-color: silver; width:100%;"></div>      
       </div>
     </div>
     <!-- ROW 8 -->
@@ -289,9 +261,9 @@
     document.getElementById("groupcsv").href="data/csvs/Group_" + group + ".csv"; 
     document.getElementById("grouppdf").href="data/pdfs/Group_" + group + ".pdf"; 
 
-    $('#condition1a').on('change', onchange);
-    $('#condition2aa').on('change', onchange);
-    $('#condition2ba').on('change', onchange);
+    $('#condition_a').on('change', onchange);
+    $('#condition_la').on('change', onchange);
+    $('#condition_ra').on('change', onchange);
   });
 </script>
 
