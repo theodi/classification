@@ -187,6 +187,8 @@ function moveAnimate(element, newParent){
 }
 
 function animateCard(card) {
+    console.log(card.index);
+    console.log(card.box);
     moveAnimate('#b'+card.index,'#box_' + card.box);
 }
 
@@ -219,7 +221,7 @@ function sortCard(card,currentPosition) {
     if(parseFloat(card[factor]) <= boundary) {
         currentPosition = currentPosition + "l";
         card.box = card.box + "l";
-        if (currentPosition.length < 2) {
+        if (currentPosition.length < 3) {
             return sortCard(card,currentPosition);
         } else {
             return card;
@@ -227,7 +229,7 @@ function sortCard(card,currentPosition) {
     } else {
         currentPosition = currentPosition + "r";
         card.box = card.box + "r";
-        if (currentPosition.length < 2) {
+        if (currentPosition.length < 3) {
             return sortCard(card,currentPosition);
         } else {
             return card;

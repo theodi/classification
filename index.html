@@ -20,12 +20,12 @@
   <!-- cards -->
   <div id="cards-wrapper">
     <div class="switch-wrapper" style="text-align: right;">
-    <span style="color:black;">Training set</span>
-    <label class="switch" value="Switch sets">
-      <input id="setSwitch" type="checkbox" onclick="toggleSet()">
-      <span class="slider round"></span>
-    </label>
-    <span style="color:black;">Evaluation set</span>
+      <span style="color:black;">Training set</span>
+      <label class="switch" value="Switch sets">
+        <input id="setSwitch" type="checkbox" onclick="toggleSet()">
+        <span class="slider round"></span>
+      </label>
+      <span style="color:black;">Evaluation set</span>
     </div>
     <div id='training-set' class='invisbox-small'></div>
     <div id='evaluation-set' class="invisbox-small" style="display: none;">
@@ -35,212 +35,296 @@
     </div>
   </div>
   
-    <div class="invisbox-big" id="decision-tree-wrapper">
+  <div class="invisbox-big" id="decision-tree-wrapper">
     <div class="switch-wrapper" style="text-align: right;">
-    <span style="color:black;">Enable drag</span>
-    <label class="switch" value="Enable Drag">
-      <input id="myCheck" type="checkbox" onclick="toggleDrag()">
-      <span class="slider round"></span>
-    </label>
-    <div>
-    <div id="canvas" class="dropzone" style="width: 100%; height: 100%; margin: auto;">
-      <div style="margin: auto;">
-        <svg style="display:none;">
-          <symbol id="sort-box" width="100%" height="300" preserveAspectRatio="none">
-              <rect width="100%" height="300" style="fill:silver;stroke-width:3;stroke:none" />
-              <text x="50%" y="50%" fill="white" dominant-baseline="middle" text-anchor="middle">CARDS</text>
-          </symbol>
-        </svg>
+      <span style="color:black;">Enable drag</span>
+      <label class="switch" value="Enable Drag">
+        <input id="myCheck" type="checkbox" onclick="toggleDrag()">
+        <span class="slider round"></span>
+      </label>
+      <div>
+        <div id="canvas" class="dropzone" style="width: 100%; height: 100%; margin: auto;">
+          <div style="margin: auto;">
+            <svg style="display:none;">
+              <symbol id="sort-box" width="100%" height="300" preserveAspectRatio="none">
+                <rect width="100%" height="300" style="fill:silver;stroke-width:3;stroke:none" />
+                <text x="50%" y="50%" fill="white" dominant-baseline="middle" text-anchor="middle">CARDS</text>
+              </symbol>
+            </svg>
 
-        <!-- html form -->
-        <form>
-          <div class="container">
-            <!-- ROW 1 -->
-            <!-- first sort factor ................................ -->
-            <div class="flex-container">
-              <div class="invisbox-tiny">
+            <!-- html form -->
+            <form>
+              <div class="container">
+                <!-- ROW 1 -->
+                <!-- first sort factor ................................ -->
+                <div class="flex-container">
+                  <select id="factor_" name="factor" class="factor">
+                    <option value="" disabled selected>Select first factor</option>
+                    <option value="bath">Bathrooms</option>
+                    <option value="beds">Bedrooms</option>
+                    <option value="year_built">Year built</option>
+                    <option value="elevation">Elevation</option>
+                    <option value="sqft">Square Footage</option>
+                    <option value="price">Price</option>
+                    <option value="price_per_sqft">Price per sqft</option>
+                  </select>
+                </div>
+                <!-- ROW 2 -->
+                <div class="flex-container arrows">
+                  <div class="condition-left" style="width:100%;">
+                    <img src="../classification/elements/neat-arrow-left.svg" class="arrow"/>
+                  </div>
+                  <div class="invisbox-tiny"></div>
+                  <div class="condition-right" style="width:100%;">
+                    <img src="../classification/elements/neat-arrow-right.svg" class="arrow"/>
+                  </div>
+                </div>
+                <div class="flex-container conditions">
+                  <div style="width:100%;">
+                    <label for="condition_a">&lt;=</label>
+                    <input type="number" placeholder="condition" id="condition_a" name="condition_a" style="max-width: 100px;">
+                  </div>
+                  <div class="invisbox-tiny">
+                  </div>
+                  <div style="width:100%;">
+                    <label for="condition_b" style="font-size: 1.4em;">&gt;</label>
+                    <input disabled type="number" placeholder="condition" id="condition_b" name="condition_b" style="max-width: 100px; background-color: silver;">
+                  </div>
+                </div>
+                <!-- ROW 3 ................................ -->
+                <div class="flex-container">
+                  <div id="box_l" class="cardbox" style="background-color: silver; width:100%;"></div>
+                  <div class="invisbox-tiny"></div>
+                  <div id="box_r" class="cardbox" style="background-color: silver; width:100%;"></div>
+                </div>
+                <!-- ROW 4 -->
+                <div class="flex-container">
+                  <div style="width:100%">
+                    <textarea name="notes3" rows="1" style="width: 95%;">Write your notes here</textarea>
+                  </div>
+                  <div class="invisbox-tiny"></div>
+                  <div style="width:100%">
+                    <textarea name="notes3" rows="1" style="width: 95%;">Write your notes here</textarea>
+                  </div>
+                </div>
+                <!-- SET 2 -->
+                <div class="flex-container conditions">
+                  <div style="width:100%;">
+                    <button type="button" name="Add Branch" class="add-branch decision_l_invert" onclick="addBranch('decision_l');">Add Branch</button>
+                    <select id="factor_l" name="factor_l" class="decision_l">
+                      <option value="" disabled selected>Select factor (optional)</option>
+                      <option value="bath">Bathrooms</option>
+                      <option value="beds">Bedrooms</option>
+                      <option value="year_built">Year built</option>
+                      <option value="elevation">Elevation</option>
+                      <option value="sqft">Square Footage</option>
+                      <option value="price">Price</option>
+                      <option value="price_per_sqft">Price per sqft</option>
+                    </select>
+                  </div>
+                  <div class="invisbox-tiny">
+                  </div>
+                  <div style="width:100%;">
+                    <button type="button" name="Add Branch" class="add-branch decision_r_invert" onclick="addBranch('decision_r');">Add Branch</button>
+                    <select id="factor_r" name="factor_r" class="decision_r">
+                      <option value="" disabled selected>Select factor (optional)</option>
+                      <option value="bath">Bathrooms</option>
+                      <option value="beds">Bedrooms</option>
+                      <option value="year_built">Year built</option>
+                      <option value="elevation">Elevation</option>
+                      <option value="sqft">Square Footage</option>
+                      <option value="price">Price</option>
+                      <option value="price_per_sqft">Price per sqft</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="flex-container conditions">
+                  <div class="invisbox-fill">
+                    <condition class="decision_l">
+                      <label for="condition_la">&lt;=</label>
+                      <input type="number" placeholder="condition" id="condition_la" name="condition_la" style="max-width: 70%;">
+                    </condition>
+                  </div>
+                  <div class="invisbox-fill">
+                    <condition class="decision_l">
+                      <label for="condition_lb">&gt;</label>
+                      <input disabled type="number" placeholder="condition" id="condition_lb" name="condition_lb" style="max-width: 70%; background-color: silver">
+                    </condition>
+                  </div>
+                  <div class="invisbox-tiny">
+                  </div>
+                  <div class="invisbox-fill">
+                    <condition class="decision_r">
+                      <label for="condition_ra">&lt;=</label>
+                      <input type="number" placeholder="condition" id="condition_ra" name="condition_ra" style="max-width: 70%;">
+                    </condition>
+                  </div>
+                  <div class="invisbox-fill">
+                    <condition class="decision_r">
+                      <label for="condition_rb">&gt;</label>
+                      <input disabled type="number" placeholder="condition" id="condition_rb" name="condition_rb" style="max-width: 70%; background-color: silver">    
+                    </condition>
+                  </div>
+                </div>
+                <!-- ROW 7 -->
+                <div class="flex-container">
+                  <div class="invisbox-fill">
+                    <div id="box_ll" class="cardbox-thin decision_l" style="background-color: silver; width:100%;"></div>
+                  </div>
+                  <div class="invisbox-fill">
+                    <div id="box_lr" class="cardbox-thin decision_l" style="background-color: silver; width:100%;"></div>
+                  </div>
+                  <div class="invisbox-tiny">
+                  </div>
+                  <div class="invisbox-fill">
+                    <div id="box_rl" class="cardbox-thin decision_r" style="background-color: silver; width:100%;"></div>
+                  </div>
+                  <div class="invisbox-fill">
+                    <div id="box_rr" class="cardbox-thin decision_r" style="background-color: silver; width:100%;"></div>      
+                  </div>
+                </div>
+                <!-- ROW 8 -->
+                <div class="flex-container">
+                  <div class="invisbox-fill">
+                    <textarea class="decision_l" name="notes3" rows="2" style="width: 95%;">Write your notes here</textarea>
+                  </div>
+                  <div class="invisbox-fill">
+                    <textarea class="decision_l" name="notes4" rows="2" style="width: 95%;">Write your notes here</textarea>
+                  </div>
+                  <div class="invisbox-tiny">
+                  </div>
+                  <div class="invisbox-fill">
+                    <textarea class="decision_r" name="notes5" rows="2" style="width: 95%;">Write your notes here</textarea>
+                  </div>
+                  <div class="invisbox-fill">
+                    <textarea class="decision_r" name="notes6" rows="2" style="width: 95%;">Write your notes here</textarea>
+                  </div>
+                </div>
+                <!-- SET 3 -->
+                <div class="flex-container">
+                  <div class="invisbox-fill" style="text-align: center;">
+                    <button type="button" name="Add Branch" class="add-branch decision_l decision_ll_invert" onclick="addBranch('decision_ll');">Add Branch</button>
+                    <select id="factor_ll" name="factor_ll" class="decision_ll">
+                      <option value="" disabled selected>Select factor (optional)</option>
+                      <option value="bath">Bathrooms</option>
+                      <option value="beds">Bedrooms</option>
+                      <option value="year_built">Year built</option>
+                      <option value="elevation">Elevation</option>
+                      <option value="sqft">Square Footage</option>
+                      <option value="price">Price</option>
+                      <option value="price_per_sqft">Price per sqft</option>
+                    </select>
+                    <div class="condition">
+                      <condition class="decision_ll">
+                        <label for="condition_lla">&lt;=</label>
+                        <input type="number" placeholder="condition" id="condition_lla" name="condition_lla" style="max-width: 70%;">
+                      </condition>
+                    </div>
+                    <div id="box_lll" class="cardbox-thin decision_ll" style="background-color: silver; width:100%; height: 200px;"></div>
+                    <div class="condition">
+                      <condition class="decision_ll">
+                        <label for="condition_llb">&gt;</label>
+                        <input disabled type="number" placeholder="condition" id="condition_llb" name="condition_llb" style="max-width: 70%; background-color: silver;">
+                      </condition>
+                    </div>
+                    <div id="box_llr" class="cardbox-thin decision_ll" style="background-color: silver; width:100%; height: 200px;"></div>
+                    <textarea class="decision_ll" name="notes3" rows="2" style="width: 95%;">Write your notes here</textarea>
+                  </div>
+                  <div class="invisbox-fill" style="text-align: center;">
+                    <button type="button" name="Add Branch" class="add-branch decision_l decision_lr_invert" onclick="addBranch('decision_lr');">Add Branch</button>
+                    <select id="factor_lr" name="factor_lr" class="decision_lr">
+                      <option value="" disabled selected>Select factor (optional)</option>
+                      <option value="bath">Bathrooms</option>
+                      <option value="beds">Bedrooms</option>
+                      <option value="year_built">Year built</option>
+                      <option value="elevation">Elevation</option>
+                      <option value="sqft">Square Footage</option>
+                      <option value="price">Price</option>
+                      <option value="price_per_sqft">Price per sqft</option>
+                    </select>
+                    <div class="condition">
+                      <condition class="decision_lr">
+                        <label for="condition_lra">&lt;=</label>
+                        <input type="number" placeholder="condition" id="condition_lra" name="condition_lra" style="max-width: 70%;">
+                      </condition>
+                    </div>
+                    <div id="box_lrl" class="cardbox-thin decision_lr" style="background-color: silver; width:100%; height: 200px;"></div>
+                    <div class="condition">
+                      <condition class="decision_lr">
+                        <label for="condition_lrb">&gt;</label>
+                        <input disabled type="number" placeholder="condition" id="condition_lrb" name="condition_lrb" style="max-width: 70%; background-color: silver;">
+                      </condition>
+                    </div>
+                    <div id="box_lrr" class="cardbox-thin decision_lr" style="background-color: silver; width:100%; height: 200px;"></div>
+                    <textarea class="decision_lr" name="notes3" rows="2" style="width: 95%;">Write your notes here</textarea>
+                  </div>
+                  <div class="invisbox-tiny">
+                  </div>
+                  <div class="invisbox-fill" style="text-align: center;">
+                    <button type="button" name="Add Branch" class="add-branch decision_r decision_rl_invert" onclick="addBranch('decision_rl');">Add Branch</button>
+                    <select id="factor_rl" name="factor_rl" class="decision_rl">
+                      <option value="" disabled selected>Select factor (optional)</option>
+                      <option value="bath">Bathrooms</option>
+                      <option value="beds">Bedrooms</option>
+                      <option value="year_built">Year built</option>
+                      <option value="elevation">Elevation</option>
+                      <option value="sqft">Square Footage</option>
+                      <option value="price">Price</option>
+                      <option value="price_per_sqft">Price per sqft</option>
+                    </select>
+                    <div class="condition">
+                      <condition class="decision_rl">
+                        <label for="condition_rla">&lt;=</label>
+                        <input type="number" placeholder="condition" id="condition_rla" name="condition_rla" style="max-width: 70%;">
+                      </condition>
+                    </div>
+                    <div id="box_rll" class="cardbox-thin decision_rl" style="background-color: silver; width:100%; height: 200px;"></div>
+                    <div class="condition">
+                      <condition class="decision_rl">
+                        <label for="condition_rlb">&gt;</label>
+                        <input disabled type="number" placeholder="condition" id="condition_rlb" name="condition_rlb" style="max-width: 70%; background-color: silver;">
+                      </condition>
+                    </div>
+                    <div id="box_rlr" class="cardbox-thin decision_rl" style="background-color: silver; width:100%; height: 200px;"></div>
+                    <textarea class="decision_rl" name="notes3" rows="2" style="width: 95%;">Write your notes here</textarea>
+                  </div>
+                  <div class="invisbox-fill" style="text-align: center;">
+                    <button type="button" name="Add Branch" class="add-branch decision_r decision_rr_invert" onclick="addBranch('decision_rr');">Add Branch</button>
+                    <select id="factor_rr" name="factor_rr" class="decision_rr">
+                      <option value="" disabled selected>Select factor (optional)</option>
+                      <option value="bath">Bathrooms</option>
+                      <option value="beds">Bedrooms</option>
+                      <option value="year_built">Year built</option>
+                      <option value="elevation">Elevation</option>
+                      <option value="sqft">Square Footage</option>
+                      <option value="price">Price</option>
+                      <option value="price_per_sqft">Price per sqft</option>
+                    </select>
+                    <div class="condition">
+                      <condition class="decision_rr">
+                        <label for="condition_rra">&lt;=</label>
+                        <input type="number" placeholder="condition" id="condition_rra" name="condition_rra" style="max-width: 70%;">
+                      </condition>
+                    </div>
+                    <div id="box_rrl" class="cardbox-thin decision_rr" style="background-color: silver; width:100%; height: 200px;"></div>
+                    <div class="condition">
+                      <condition class="decision_rr">
+                        <label for="condition_rrb">&gt;</label>
+                        <input disabled type="number" placeholder="condition" id="condition_rrb" name="condition_rrb" style="max-width: 70%; background-color: silver;">
+                      </condition>
+                    </div>
+                    <div id="box_rrr" class="cardbox-thin decision_rr" style="background-color: silver; width:100%; height: 200px;"></div>
+                    <textarea class="decision_rr" name="notes3" rows="2" style="width: 95%;">Write your notes here</textarea>
+                  </div>
+                </div>
               </div>
-              <div class="invisbox-tiny">
-              </div>
-              <div class="invisbox-tiny">
-                <select id="factor_" name="factor">
-                  <option value="" disabled selected>Select factor</option>
-                  <option value="bath">Bathrooms</option>
-                  <option value="beds">Bedrooms</option>
-                  <option value="year_built">Year built</option>
-                  <option value="elevation">Elevation</option>
-                  <option value="sqft">Square Footage</option>
-                  <option value="price">Price</option>
-                  <option value="price_per_sqft">Price per sqft</option>
-                </select>
-              </div>
-              <div class="invisbox-tiny">
-                <img src="../classification/elements/decision.svg" width="100%"/>
-              </div>
-              <div class="invisbox-med">
-              </div>
-            </div>
-            <!-- ROW 2 ................................ -->
-            <div class="flex-container">
-            <div class="invisbox-tiny">
-            </div>
-            <div class="invisbox-tiny condition-left">
-              <label for="condition_a">&lt;=</label>
-              <input type="text" placeholder="condition_a" id="condition_a" name="condition_a" style="max-width: 70%;">
-            </div>
-            <div class="invisbox-tiny">
-              <img src="../classification/elements/neat-arrow-left.svg" width="100%"/>
-            </div>
-            <div class="invisbox-tiny">
-            </div>
-            <div class="invisbox-tiny">
-              <img src="../classification/elements/neat-arrow-right.svg" width="100%"/>
-            </div>
-            <div class="invisbox-tiny condition-right">
-              <label for="condition_b" style="font-size: 1.4em;">&gt;</label>
-              <input disabled type="text" placeholder="condition_b" id="condition_b" name="condition_b" style="max-width: 70%; background-color: silver;">
-            </div>
-            <div class="invisbox-tiny">
-            </div>
-          </div>
-          <!-- ROW 3 ................................ -->
-          <div class="flex-container">
-            <div id="box_l" class="cardbox" style="background-color: silver; width:100%;"></div>
-            <div class="invisbox-tiny"></div>
-            <div id="box_r" class="cardbox" style="background-color: silver; width:100%;"></div>
+            </form>
+            <!-- end of html form -->
           </div>
         </div>
-        <!-- ROW 4 -->
-          <div class="flex-container">
-          <div class="invisbox-tiny">
-            <select id="factor_l" name="factor_l">
-                  <option value="" disabled selected>Select factor (optional)</option>
-                  <option value="bath">Bathrooms</option>
-                  <option value="beds">Bedrooms</option>
-                  <option value="year_built">Year built</option>
-                  <option value="elevation">Elevation</option>
-                  <option value="sqft">Square Footage</option>
-                  <option value="price">Price</option>
-                  <option value="price_per_sqft">Price per sqft</option>
-            </select>
-          </div>
-          <div class="invisbox-tiny">
-            <img src="../classification/elements/decision.svg" width="100%"/>
-          </div>
-          <div class="invisbox-tiny">
-          </div>
-          <div class="invisbox-tiny">
-          </div>
-          <div class="invisbox-tiny">
-            <select id="factor_r" name="factor_r">
-                  <option value="" disabled selected>Select factor (optional)</option>
-                  <option value="bath">Bathrooms</option>
-                  <option value="beds">Bedrooms</option>
-                  <option value="year_built">Year built</option>
-                  <option value="elevation">Elevation</option>
-                  <option value="sqft">Square Footage</option>
-                  <option value="price">Price</option>
-                  <option value="price_per_sqft">Price per sqft</option>
-            </select>
-          </div>
-          <div class="invisbox-tiny">
-            <img src="../classification/elements/decision.svg" width="100%"/>
-          </div>
-          <div class="invisbox-tiny">
-          </div>
-        </div>
-        <!-- ROW 5 -->
-        <div class="flex-container">
-        <div class="invisbox-tiny">
-          <img src="../classification/elements/neat-arrow-left.svg" width="100%"/>
-        </div>
-        <div class="invisbox-tiny">
-        </div>
-        <div class="invisbox-tiny">
-          <img src="../classification/elements/neat-arrow-right.svg" width="100%"/>
-        </div>
-        <div class="invisbox-tiny">
-        </div>
-        <div class="invisbox-tiny">
-          <img src="../classification/elements/neat-arrow-left.svg" width="100%"/>
-        </div>
-        <div class="invisbox-tiny">
-        </div>
-        <div class="invisbox-tiny">
-          <img src="../classification/elements/neat-arrow-right.svg" width="100%"/>
-        </div>
-      </div>
-      <!-- ROW 6 -->
-      <div class="flex-container">
-      <div class="invisbox-tiny condition">
-        <label for="condition_la">&lt;=</label>
-        <input type="text" placeholder="condition_la" id="condition_la" name="condition_la" style="max-width: 70%;">
-      </div>
-      <div class="invisbox-tiny">
-      </div>
-      <div class="invisbox-tiny condition">
-        <label for="condition_lb">&gt;</label>
-        <input disabled type="text" placeholder="condition_lb" id="condition_lb" name="condition_lb" style="max-width: 70%; background-color: silver">
-      </div>
-      <div class="invisbox-tiny">
-      </div>
-      <div class="invisbox-tiny condition">
-        <label for="condition_ra">&lt;=</label>
-        <input type="text" placeholder="condition_ra" id="condition_ra" name="condition_ra" style="max-width: 70%;">
-      </div>
-      <div class="invisbox-tiny">
-      </div>
-      <div class="invisbox-tiny condition">
-        <label for="condition_rb">&gt;</label>
-        <input disabled type="text" placeholder="condition_rb" id="condition_rb" name="condition_rb" style="max-width: 70%; background-color: silver">
-      </div>
-    </div>
-    <!-- ROW 7 -->
-      <div class="flex-container">
-      <div class="invisbox-fill">
-        <div id="box_ll" class="cardbox-thin" style="background-color: silver; width:100%;"></div>
-      </div>
-      <div class="invisbox-fill">
-        <div id="box_lr" class="cardbox-thin" style="background-color: silver; width:100%;"></div>
-      </div>
-      <div class="invisbox-tiny">
-      </div>
-      <div class="invisbox-fill">
-        <div id="box_rl" class="cardbox-thin" style="background-color: silver; width:100%;"></div>
-      </div>
-      <div class="invisbox-fill">
-        <div id="box_rr" class="cardbox-thin" style="background-color: silver; width:100%;"></div>      
-      </div>
-    </div>
-    <!-- ROW 8 -->
-      <div class="flex-container">
-      <div class="invisbox-fill">
-        <textarea name="notes3" rows="3" cols="15">Write your notes here</textarea>
-      </div>
-      <div class="invisbox-fill">
-        <textarea name="notes4" rows="3" cols="15">Write your notes here</textarea>
-      </div>
-      <div class="invisbox-tiny">
-      </div>
-      <div class="invisbox-fill">
-        <textarea name="notes5" rows="3" cols="15">Write your notes here</textarea>
-      </div>
-      <div class="invisbox-fill">
-        <textarea name="notes6" rows="3" cols="15">Write your notes here</textarea>
-      </div>
-    </div>
-
-      </div>
-
-
-
-        </form>
-        <!-- end of html form -->
       </div>
     </div>
   </div>
-</div>
-
 </body>
 <script src="js/make-ml-model.js"></script>
 <script src="js/switch.js"></script>
@@ -266,5 +350,4 @@
     $('#condition_ra').on('change', onchange);
   });
 </script>
-
 </html>

@@ -89,11 +89,13 @@ html {
 }
 
 #decision-tree-wrapper {
-  min-width: 40%;
-  max-width: 72%;
-  width: 61%;
   display: inline-block;
-  float: right;
+  min-width: 800px;
+  max-width: 1200px;
+  vertical-align: top;
+  width: calc(100vw - 500px);
+  position: relative;
+  margin-right: -50vw;
 }
 #cards-wrapper {
   max-width: 468px;

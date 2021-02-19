@@ -22,3 +22,7 @@ function toggleSet() {
     document.getElementById("training-set").style.display = "block";
   }
 }
+function addBranch(branch) {
+	$('.'+branch).show();
+	$('.'+branch+'_invert').hide();
+}

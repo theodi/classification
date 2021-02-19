@@ -162,16 +162,53 @@ footer span {
     margin-bottom: 0;
   }
 }
-.condition-left {
-  margin-top: 1em;
-}
-.condition-right {
-  margin-top: 1em;
-  margin-left: -1em;
-}
 .condition label {
   font-size: 1.4em;
 }
-.confition input {
-  max-width: 80%;
+.condition input {
+  max-width: 100px;
+}
+.conditions, .conditions .invisbox-fill {
+  text-align: center;
+}
+.condition-left {
+  text-align: right;
+}
+.condition-left img {
+  padding-right: 15px;
+}
+.condition-right {
+  text-align: left;
+}
+.condition-right img {
+  padding-left: 15px;
+}
+.arrows {
+  position: relative;
+  top: -0.7em;
+  margin-bottom: -1em;
+}
+.arrows div {
+    padding: 0px;
+    margin: 0px;
+    max-height: 1.7em;
+}
+.arrows .invisbox-fill {
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
+    max-height: 1.7em;
+    background-color: #0000;
+}
+.arrow {
+  max-width: 3em;
+  max-height: 2em;
+}
+.factor {
+  margin-left: auto;
+  margin-right: auto;
+}
+.flex-container .invisbox-fill {
+  background-color: #0000;
+  width: 21.5%;
 }
