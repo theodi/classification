@@ -29,16 +29,16 @@
     </div>
     <div id='training-set' class='invisbox-small'>
       <div id="buttons" style="width: 100%">
-        <button type="button" name="runTrainingData" onClick="sortCards(cards.trainingSet,'b');">Evaluate cards against model</button>
-        <button type="button" name="returnTrainingData" onClick="returnCards(cards.trainingSet,'training-set','b');">Return cards</button>
+        <button type="button" name="runTrainingData" onClick="sortCards(cards.trainingSet,'b');">Run evaluation</button>
+        <button type="button" name="returnTrainingData" onClick="returnCards(cards.trainingSet,'training-set','b');">Reset</button>
       </div>
     </div>
     <div id='evaluation-set' class="invisbox-small" style="display: none;">
       <div id="buttons" style="width: 100%">
-        <button type="button" name="evaluation-button" onClick="startInput();">Add evaluation card</button>
-        <button type="button" name="evaluation-button" onClick="getRandomReds(20);">Add 20 random evaluation cards</button>
-        <button type="button" name="runEvaluationData" onClick="sortCards(cards.evaluationSet,'r');">Evaluate cards against model</button>
-        <button type="button" name="returnTrainingData" onClick="returnCards(cards.evaluationSet,'evaluation-set','r');">Return cards</button>
+        <button type="button" name="evaluation-button" onClick="startInput();">Add card</button>
+        <button type="button" name="evaluation-button" onClick="getRandomReds(20);">Fill random</button>
+        <button type="button" name="runEvaluationData" onClick="sortCards(cards.evaluationSet,'r');">Run evaluation</button>
+        <button type="button" name="returnTrainingData" onClick="returnCards(cards.evaluationSet,'evaluation-set','r');">Reset</button>
       </div>
     </div>
   </div>
