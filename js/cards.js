@@ -29,7 +29,6 @@ function getRedCard(card) {
     });
 }
 
-
 function getPurpleCards() {
     var count = 1;
     d3.csv('data/houses_20.csv', function(data) {
@@ -52,15 +51,19 @@ function getBlueCards(group,card) {
     });
 }
 
-function getRandomNumbers(count,min,max) {
+function getRandomReds(count) {
+    var i = redCount;
+    var min = 1;
+    var max = 242;
     var random = [];
-    var i = 0;
     while (i<count) {
-        random[Math.floor((Math.random() * max) + min)] = true;
-        i = ObjectLength(random);
-        console.log(i);
-    } 
-    return random;
+        var card = Math.floor((Math.random() * max) + min);
+        if (!random[card]) {
+            random[card] = true;
+            getRedCard(card);
+            i++;
+        }
+    }
 }
 
 function ObjectLength( object ) {
@@ -73,19 +76,6 @@ function ObjectLength( object ) {
     return length;
 };
 
-function getRedCards(random) {
-    var index = 1;
-    d3.csv('data/red_cards.csv', function(data) {
-        if (random[index]) {
-            data.city = "?";
-            data.index = index;
-            cards.evaluationSet.push(data);
-            renderRedCardNormal(data,index,'red');
-        }
-        index += 1;
-    });
-}
-
 function removeCard(id){
     $('#red-'+id).remove();
     redCount = redCount - 1;
@@ -97,11 +87,11 @@ function renderCard(data,count,color) {
 }
 
 function renderRedCardNormal(data,count,color) {
-    $('<card id="red-'+count+'" class="draggable drag-drop"><h1 class="target">'+data.city+'</h1><h1 class="number">#'+count+'</h1><image src="img/house.png"></image><table class="'+color+'"><tr><td class="attribute">Bathrooms</td><td class="value">'+data.bath+'</td></tr><tr><td class="attribute">Bedrooms</td><td class="value">'+data.beds+'</td></tr><tr><td class="attribute">Year built</td><td class="value">'+data.year_built+'</td></tr><tr><td class="attribute">Elevation</td><td class="value">'+formatNumber(data.elevation)+'ft</td></tr><tr><td class="attribute">Square Footage</td><td class="value">'+formatNumber(data.sqft)+'</td></tr><tr><td class="attribute">Price</td><td class="value">$'+formatNumber(data.price)+'</td></tr><tr><td class="attribute">Price per sqft</td><td class="value">$'+formatNumber(data.price_per_sqft)+'</td></tr></table></card>').insertBefore("#evaluation-button");
+    $('#evaluation-set').append('<card id="r'+count+'" class="draggable drag-drop"><h1 class="target">'+data.city+'</h1><h1 class="number">#'+count+'</h1><image src="img/house.png"></image><table class="'+color+'"><tr><td class="attribute">Bathrooms</td><td class="value">'+data.bath+'</td></tr><tr><td class="attribute">Bedrooms</td><td class="value">'+data.beds+'</td></tr><tr><td class="attribute">Year built</td><td class="value">'+data.year_built+'</td></tr><tr><td class="attribute">Elevation</td><td class="value">'+formatNumber(data.elevation)+'ft</td></tr><tr><td class="attribute">Square Footage</td><td class="value">'+formatNumber(data.sqft)+'</td></tr><tr><td class="attribute">Price</td><td class="value">$'+formatNumber(data.price)+'</td></tr><tr><td class="attribute">Price per sqft</td><td class="value">$'+formatNumber(data.price_per_sqft)+'</td></tr></table></card>');
 }
 
 function renderRedCard(data,count,color) {
-    $('<card id="red-'+count+'" class="draggable drag-drop"><h1 class="target">'+data.city+'</h1><h1 class="number">#'+count+'</h1><image src="img/house.png"></image><table class="'+color+'"><tr><td class="attribute">Bathrooms</td><td class="value">'+data.bath+'</td></tr><tr><td class="attribute">Bedrooms</td><td class="value">'+data.beds+'</td></tr><tr><td class="attribute">Year built</td><td class="value">'+data.year_built+'</td></tr><tr><td class="attribute">Elevation</td><td class="value">'+formatNumber(data.elevation)+'ft</td></tr><tr><td class="attribute">Square Footage</td><td class="value">'+formatNumber(data.sqft)+'</td></tr><tr><td class="attribute">Price</td><td class="value">$'+formatNumber(data.price)+'</td></tr><tr><td class="attribute">Price per sqft</td><td class="value">$'+formatNumber(data.price_per_sqft)+'</td></tr></table><div></card>').insertBefore("#evaluation-button");
+    $('#evaluation-set').append('<card id="r'+count+'" class="draggable drag-drop"><h1 class="target">'+data.city+'</h1><h1 class="number">#'+count+'</h1><image src="img/house.png"></image><table class="'+color+'"><tr><td class="attribute">Bathrooms</td><td class="value">'+data.bath+'</td></tr><tr><td class="attribute">Bedrooms</td><td class="value">'+data.beds+'</td></tr><tr><td class="attribute">Year built</td><td class="value">'+data.year_built+'</td></tr><tr><td class="attribute">Elevation</td><td class="value">'+formatNumber(data.elevation)+'ft</td></tr><tr><td class="attribute">Square Footage</td><td class="value">'+formatNumber(data.sqft)+'</td></tr><tr><td class="attribute">Price</td><td class="value">$'+formatNumber(data.price)+'</td></tr><tr><td class="attribute">Price per sqft</td><td class="value">$'+formatNumber(data.price_per_sqft)+'</td></tr></table><div></card>').insertBefore("#evaluation-button");
 }
 
 
@@ -186,21 +176,30 @@ function moveAnimate(element, newParent){
     });
 }
 
-function animateCard(card) {
+function animateCard(card,color) {
     console.log(card.index);
     console.log(card.box);
-    moveAnimate('#b'+card.index,'#box_' + card.box);
+    moveAnimate('#'+color+card.index,'#box_' + card.box);
 }
 
-function sortTrainingSet() {
-    sortCards(cards.trainingSet,"");
-}
-
-function sortCards(cardset,currentPosition) {
+function returnCards(cardset,boxid,color) {
     var interval = 0;
     cardset.forEach(function(card,value,index) {
+        $('#'+color+card.index).removeAttr('style');
+        setTimeout(function() {
+            moveAnimate('#'+color+card.index,'#'+boxid);
+        },interval);
+        interval += 100;
+    });
+}
+
+function sortCards(cardset,color) {
+    var currentPosition = "";
+    var interval = 0;
+    cardset.forEach(function(card,value,index) {
+        $('#'+color+card.index).removeAttr('style');
         setTimeout(function() { 
-            animateCard(sortCard(card,currentPosition));
+            animateCard(sortCard(card,currentPosition),color);
         },interval);
         interval += 800;
     });
@@ -210,6 +209,7 @@ function sortCard(card,currentPosition) {
     if (currentPosition == "") {
         card.box = "";  
     }
+
     var factor = $('#factor_'+currentPosition).val();
     var boundary = $('#condition_'+currentPosition+'a').val();
     console.log(factor);

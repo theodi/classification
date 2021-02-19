@@ -5,9 +5,10 @@ card {
 	margin: 2px;
 	border: 1px solid black;
 	background-color: white;
-	z-index: 1000;
+	z-index: 1;
 	padding-top: 6px;
 	padding-bottom: 6px;
+	height: 6.6em;
 }
 card button {
 	margin-top: 1em;
@@ -54,6 +55,7 @@ td {
 }
 .attribute {
 	text-align: left;
+	white-space: nowrap;
 }
 .value {
 	font-weight: bold;
