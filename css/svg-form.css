@@ -212,3 +212,11 @@ footer span {
   background-color: #0000;
   width: 21.5%;
 }
+button {
+  max-width: 10.5em;
+  height: 4em;
+  padding: 5px;
+  border-radius: 0px;
+  color: black;
+  background-color: pink;
+}

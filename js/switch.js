@@ -22,6 +22,17 @@ function toggleSet() {
     document.getElementById("training-set").style.display = "block";
   }
 }
+function selectSet(set) {
+	document.getElementById("training-set").style.display = "none";
+	document.getElementById("training-tab").classList.remove("selected");
+	document.getElementById("test-set").style.display = "none";
+	document.getElementById("test-tab").classList.remove("selected");
+	document.getElementById("evaluation-set").style.display = "none";
+	document.getElementById("evaluation-tab").classList.remove("selected");
+
+	document.getElementById(set+"-set").style.display = "block";
+	document.getElementById(set+"-tab").classList.add("selected");	
+}
 function addBranch(branch) {
 	$('.'+branch).show();
 	$('.'+branch+'_invert').hide();
