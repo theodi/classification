@@ -23,6 +23,8 @@ function toggleSet() {
   }
 }
 function selectSet(set) {
+	document.getElementById("instructions-set").style.display = "none";
+	document.getElementById("instructions-tab").classList.remove("selected");
 	document.getElementById("training-set").style.display = "none";
 	document.getElementById("training-tab").classList.remove("selected");
 	document.getElementById("test-set").style.display = "none";

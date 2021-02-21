@@ -254,6 +254,9 @@ button {
   vertical-align: top;
   font-size: 15px;
 }
+button a {
+  text-decoration: none;
+}
 #buttons {
   text-align: center;
 }
@@ -289,6 +292,17 @@ tab {
   min-width: 468px;
   min-height: 1000px;
   border: 1px solid #C9F6;
+}
+#instructions-set {
+  min-width: 468px;
+  min-height: 1000px;
+  border: 1px solid #0bf6;
+}
+#instructions-set p, #instructions-set ul, #instructions-set li, #instructions-set h4  {
+  padding: 0px;
+}
+#instructions-tab.selected {
+  background-color: #0bf6;
 }
 #training-tab.selected {
   background-color: #0bf6;

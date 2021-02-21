@@ -15,25 +15,37 @@
 
 <body style="margin: 0px;">
   <img src="img/learning-72-Pink-300px.png" class="logo"/>
-  <h3 style="padding: 0px;">Build and test your own decision tree model<br/><span style="font-size: 0.6em;">( <a style="text-decoration:underline;" href="" onClick="viewInstructions()">View Instructions</a> | <a id="groupcsv" style="text-decoration:underline;" href="data/csvs/Group_1.csv">Download card data (csv)</a> | <a id="grouppdf" style="text-decoration:underline;" href="data/Group_1.pdf">Download cards (pdf)</a> )</span></h3>
+  <h3 style="padding: 0px;">Build and test your own decision tree model</h3>
   <!-- main flex container -->
   <!-- cards -->
   <div id="cards-wrapper">
     <div class="switch-wrapper" style="text-align: right;">
+      <tab id="instructions-tab" onClick="selectSet('instructions');">Instructions</tab>
       <tab id="training-tab" class="selected" onClick="selectSet('training');">Training set</tab>
       <tab id="test-tab" onClick="selectSet('test');">Test set</tab>
       <tab id="evaluation-tab" onClick="selectSet('evaluation');">Evaluation set</tab>
-      <!--
-      <span style="color:black;">Training set</span>
-      <label class="switch" value="Switch sets">
-        <input id="setSwitch" type="checkbox" onclick="toggleSet()">
-        <span class="slider round"></span>
-      </label>
-      <span style="color:black;">Evaluation set</span>
-    -->
+    </div>
+    <div id="instructions-set" class='invisbox-small' style="display: none;">
+      <h4>Classification Game</h4>
+      <p>You have 20 cards providing information about houses in your <a href="#" onClick="selectSet('training');" style="text-decoration: underline;">training set</a>.</p>
+      <ul>
+        <li>10 give information about properties in San Francisco</li>
+        <li>10 give information about properties in New York</li>
+      </ul>
+      <p>You can download the training set as a csv containing the data that you can open in Excel if you feel it would help.</p>
+      <p>Your challenge is to use this data to inform the building of a decision tree that can classify cards where the city is unknown (the evaluation set).</p>
+      <p>You can rearrange the all sets of cards within the panel by dragging them.</p>
+      <p>Please design your decision tree in the panel available.</p>
+      <p>When you have finished building your tree, you can select your own <a href="#" onClick="selectSet('evaluation');" style="text-decoration: underline;">evaluation set</a> to see if it works.</p>
+      <h4>Buttons</h4>
+      <p><b>Run evaluation: </b> Try your tree with the cards.</p>
+      <p><b>Reset: </b> Moves the cards back into the panel after an evaluation.</p>
+      <p>Good luck!</p>
     </div>
     <div id='training-set' class='invisbox-small'>
       <div id="buttons" style="width: 100%">
+        <button type="button" name="getTrainingDataCSV"><a id="groupcsv" href="data/csvs/Group_1.csv">Download cards (csv)</a></button>
+        <button type="button" name="getTrainingDataPDF"><a id="grouppdf" href="data/Group_1.pdf">Download cards (pdf)</a></button>
         <button type="button" name="runTrainingData" onClick="sortCards(cards.trainingSet,'b');">Run evaluation</button>
         <button type="button" name="returnTrainingData" onClick="returnCards(cards.trainingSet,'training-set','b');">Reset</button>
       </div>
