@@ -57,12 +57,12 @@ h2 {
 }
 
 h3 {
-  color: black;
+  color: white;
   font-size:1.2em;
 }
 
 h4 {
-  color: black;
+  color: white;
   font-size:1.1em;
 }
 
@@ -96,6 +96,7 @@ html {
   width: calc(100vw - 500px);
   position: relative;
   margin-right: -50vw;
+  color: black;
 }
 #cards-wrapper {
   max-width: 468px;
