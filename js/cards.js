@@ -122,7 +122,6 @@ function ObjectLength( object ) {
 function removeCards(cardset,color) {
     var temp = cardset;
     temp.forEach(function(card,value,index) {
-        console.log(card.index);
         cardset = removeCard(card.index,cardset,color);
     });
     removeCards(cardset,color);
@@ -267,8 +266,6 @@ function moveAnimate(element, newParent){
 }
 
 function animateCard(card,color) {
-    console.log(card.index);
-    console.log(card.box);
     moveAnimate('#'+color+card.index,'#box_' + card.box);
 }
 
@@ -302,12 +299,9 @@ function sortCard(card,currentPosition) {
 
     var factor = $('#factor_'+currentPosition).val();
     var boundary = $('#condition_'+currentPosition+'a').val();
-    console.log(factor);
-    console.log(boundary);
     if (!factor || !boundary) {
         return card;
     }
-    console.log(card[factor]);
     if(parseFloat(card[factor]) <= boundary) {
         currentPosition = currentPosition + "l";
         card.box = card.box + "l";
