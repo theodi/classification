@@ -3,12 +3,18 @@ cards.trainingSet = [];
 cards.testSet = [];
 cards.evaluationSet = [];
 
+var rCount = 0;
+var rDone = [];
+var pCount = 0;
+var pDone = [];
+var maxCount = 20;
+
 function processInput() {
     val = $('#number').val();
-    if (redCount >= maxRedCount) {
-        alert("You have reached your limit of " + maxRedCount + " cards!");
+    if (rCount >= maxCount) {
+        alert("You have reached your limit of " + maxCount + " cards!");
     }
-    if (redDone[val]) {
+    if (rDone[val]) {
         alert("You already have that card");
     } else {
         getRedCard(val);
@@ -18,13 +24,17 @@ function processInput() {
 function getRedCard(card) {
     var index = 1;
     d3.csv('data/red_cards.csv', function(data) {
-        if (index == card && redCount < maxRedCount) {
+        if (index == card && rCount < maxCount) {
             data.city = "?";
             data.index = index;
             cards.evaluationSet.push(data);
             renderRedCard(data,index,'red');
-            redCount += 1;
-            redDone[index] = true;
+            rCount += 1;
+            rDone[index] = true;
+            if (rCount == maxCount) {
+                $('#fill-reds').hide();
+                $('#remove-reds').show();
+            }
         }
         index += 1;
     });
@@ -33,19 +43,23 @@ function getRedCard(card) {
 function getPurpleCard(card) {
     var index = 1;
     d3.csv('data/houses.csv', function(data) {
-        if (index == card && purpleCount < maxRedCount) {
+        if (index == card && pCount < maxCount) {
             data.index = index;
             cards.testSet.push(data);
             renderPurpleCard(data,index,'purple');
-            purpleCount += 1;
-            purpleDone[index] = true;
+            pCount += 1;
+            pDone[index] = true;
+            if (pCount == maxCount) {
+                $('#fill-purples').hide();
+                $('#remove-purples').show();
+            }
         }
         index += 1;
     });
 }
 
 function getRandomPurples(count) {
-    var i = redCount;
+    var i = pCount;
     var min = 1;
     var max = 250;
     var random = [];
@@ -57,6 +71,10 @@ function getRandomPurples(count) {
             i++;
         }
     }
+}
+
+function removeSet(set) {
+
 }
 
 //renderCard(data,count,'purple');
@@ -76,7 +94,7 @@ function getBlueCards(group,card) {
 }
 
 function getRandomReds(count) {
-    var i = redCount;
+    var i = rCount;
     var min = 1;
     var max = 242;
     var random = [];
@@ -88,6 +106,7 @@ function getRandomReds(count) {
             i++;
         }
     }
+
 }
 
 function ObjectLength( object ) {
@@ -100,10 +119,39 @@ function ObjectLength( object ) {
     return length;
 };
 
-function removeCard(id){
-    $('#red-'+id).remove();
-    redCount = redCount - 1;
-    redDone[id] = false;
+function removeCards(cardset,color) {
+    var temp = cardset;
+    temp.forEach(function(card,value,index) {
+        console.log(card.index);
+        cardset = removeCard(card.index,cardset,color);
+    });
+    removeCards(cardset,color);
+}
+
+function removeCard(id,cardset,color){
+    $('#'+color+id).remove();
+    if (color == "r") { 
+        rCount = rCount - 1;
+        rDone[id] = false;
+        $('#remove-reds').hide();
+        $('#fill-reds').show();
+    }
+    if (color == "b") { 
+        bCount = bCount - 1;
+        bDone[id] = false;
+    }
+    if (color == "p") { 
+        pCount = pCount - 1;
+        pDone[id] = false;
+        $('#remove-purples').hide();
+        $('#fill-purples').show();
+    }
+    cardset.forEach(function(card,index,object) {
+        if (card.index == id) {
+            object.splice(index,1);
+        }
+    });
+    return cardset;
 }
 
 function renderCard(data,count,color) {
@@ -118,7 +166,7 @@ function renderRedCard(data,count,color) {
     $('#evaluation-set').append('<card id="r'+count+'" class="draggable drag-drop"><h1 class="target">'+data.city+'</h1><h1 class="number">#'+count+'</h1><image src="img/house.png"></image><table class="'+color+'"><tr><td class="attribute">Bathrooms</td><td class="value">'+data.bath+'</td></tr><tr><td class="attribute">Bedrooms</td><td class="value">'+data.beds+'</td></tr><tr><td class="attribute">Year built</td><td class="value">'+data.year_built+'</td></tr><tr><td class="attribute">Elevation</td><td class="value">'+formatNumber(data.elevation)+'ft</td></tr><tr><td class="attribute">Square Footage</td><td class="value">'+formatNumber(data.sqft)+'</td></tr><tr><td class="attribute">Price</td><td class="value">$'+formatNumber(data.price)+'</td></tr><tr><td class="attribute">Price per sqft</td><td class="value">$'+formatNumber(data.price_per_sqft)+'</td></tr></table><div></card>');
 }
 function renderPurpleCard(data,count,color) {
-    $('#test-set').append('<card id="r'+count+'" class="draggable drag-drop"><h1 class="target">'+data.city+'</h1><h1 class="number">#'+count+'</h1><image src="img/house.png"></image><table class="'+color+'"><tr><td class="attribute">Bathrooms</td><td class="value">?????</td></tr><tr><td class="attribute">Bedrooms</td><td class="value">?????</td></tr><tr><td class="attribute">Year built</td><td class="value">?????</td></tr><tr><td class="attribute">Elevation</td><td class="value">?????</td></tr><tr><td class="attribute">Square Footage</td><td class="value">?????</td></tr><tr><td class="attribute">Price</td><td class="value">?????</td></tr><tr><td class="attribute">Price per sqft</td><td class="value">?????</td></tr></table><div></card>');
+    $('#test-set').append('<card id="p'+count+'" class="draggable drag-drop"><h1 class="target">'+data.city+'</h1><h1 class="number">#'+count+'</h1><image src="img/house.png"></image><table class="'+color+'"><tr><td class="attribute">Bathrooms</td><td class="value">?????</td></tr><tr><td class="attribute">Bedrooms</td><td class="value">?????</td></tr><tr><td class="attribute">Year built</td><td class="value">?????</td></tr><tr><td class="attribute">Elevation</td><td class="value">?????</td></tr><tr><td class="attribute">Square Footage</td><td class="value">?????</td></tr><tr><td class="attribute">Price</td><td class="value">?????</td></tr><tr><td class="attribute">Price per sqft</td><td class="value">?????</td></tr></table><div></card>');
 }
 
 
@@ -160,10 +208,10 @@ function startInputPurple() {
 }
 
 function processNumber(val) {
-    if (redCount >= maxRedCount) {
-        alert("You have reached your limit of " + maxRedCount + " cards!");
+    if (rCount >= maxCount) {
+        alert("You have reached your limit of " + maxCount + " cards!");
     }
-    if (redDone[val]) {
+    if (rDone[val]) {
         alert("You already have that card");
     } else {
         getRedCard(val);
@@ -171,18 +219,14 @@ function processNumber(val) {
 }
 
 function processNumberPurple(val) {
-    if (purpleCount >= maxRedCount) {
-        alert("You have reached your limit of " + maxRedCount + " cards!");
+    if (pCount >= maxCount) {
+        alert("You have reached your limit of " + maxCount + " cards!");
     }
-    if (purpleDone[val]) {
+    if (pDone[val]) {
         alert("You already have that card");
     } else {
         getPurpleCard(val);
     }
-}
-
-function viewInstructions(){
-    alert("Classification Game \n\n You have 20 blue cards:\n 10 give information about properties in San Francisco \n 10 give information about properties in New York \n\nYour challenge is to use this data to inform the building of a decision tree that can classify cards where the city is unknown. \n\nYou can rearrange the cards within the panel by dragging them. \n\nPlease design your decision tree in the panel available. \n\nYou can also download the blue card data as csv containing the data that you can open in Excel if you feel it would help. \n\nWhen you have finished building your tree, you can select your own evaluation cards to see if it works. \n\nGood luck!");
 }
 
 function onchange() {
