@@ -41,8 +41,8 @@
       <div id="buttons" style="width: 100%">
         <button type="button" name="getTrainingDataCSV"><a id="groupcsv" href="data/csvs/Group_1.csv">Download cards (csv)</a></button>
         <button type="button" name="getTrainingDataPDF"><a id="grouppdf" href="data/Group_1.pdf">Download cards (pdf)</a></button>
-        <button type="button" name="runTrainingData" onClick="sortCards(cards.trainingSet,'b');">Run model</button>
-        <button type="button" name="returnTrainingData" onClick="returnCards(cards.trainingSet,'training-set','b');">Reset</button>
+        <button type="button" class="model-button" name="runTrainingData" onClick="sortCards(cards.trainingSet,'b');">Run model</button>
+        <button type="button" class="model-button" name="returnTrainingData" onClick="returnCards(cards.trainingSet,'training-set','b');">Reset</button>
       </div>
     </div>
     <div id='test-set' class="invisbox-small" style="display: none;">
@@ -50,8 +50,8 @@
         <button type="button" name="evaluation-button" onClick="startInputPurple();">Add card</button>
         <button type="button" id="fill-purples" name="fill-button" onClick="getRandomPurples(20);">Fill random</button>
         <button type="button" id="remove-purples" name="remove-button" onClick="removeCards(cards.testSet,'p');" style="display: none;">Remove all</button>
-        <button type="button" name="runEvaluationData" onClick="sortCards(cards.testSet,'p');">Run model</button>
-        <button type="button" name="returnTrainingData" onClick="returnCards(cards.testSet,'test-set','p');">Reset</button>
+        <button type="button" class="model-button" name="runEvaluationData" onClick="sortCards(cards.testSet,'p');">Run model</button>
+        <button type="button" class="model-button" name="returnTrainingData" onClick="returnCards(cards.testSet,'test-set','p');">Reset</button>
       </div>
     </div>
     <div id='evaluation-set' class="invisbox-small" style="display: none;">
@@ -59,8 +59,8 @@
         <button type="button" name="evaluation-button" onClick="startInput();">Add card</button>
         <button type="button" id="fill-reds" name="fill-button" onClick="getRandomReds(20);">Fill random</button>
         <button type="button" id="remove-reds" name="remove-button" onClick="removeCards(cards.evaluationSet,'r');" style="display: none;">Remove all</button>
-        <button type="button" name="runEvaluationData" onClick="sortCards(cards.evaluationSet,'r');">Run model</button>
-        <button type="button" name="returnTrainingData" onClick="returnCards(cards.evaluationSet,'evaluation-set','r');">Reset</button>
+        <button type="button" class="model-button" name="runEvaluationData" onClick="sortCards(cards.evaluationSet,'r');">Run model</button>
+        <button type="button" class="model-button" name="returnTrainingData" onClick="returnCards(cards.evaluationSet,'evaluation-set','r');">Reset</button>
       </div>
     </div>
   </div>

@@ -39,3 +39,8 @@ function addBranch(branch) {
 	$('.'+branch).show();
 	$('.'+branch+'_invert').hide();
 }
+window.addEventListener('keydown', function (e) {
+    if ( e.key == "m" ) {
+        $(".model-button").show();
+    }
+}, false); 
