@@ -40,7 +40,7 @@ function addBranch(branch) {
 	$('.'+branch+'_invert').hide();
 }
 window.addEventListener('keydown', function (e) {
-    if ( e.key == "m" ) {
+    if ( e.key == "^" ) {
         $(".model-button").show();
     }
 }, false); 
