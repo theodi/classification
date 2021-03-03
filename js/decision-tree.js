@@ -12,3 +12,7 @@ function onchange() {
 	    var condition_rb = $('#condition_rb');
 	    condition_rb.val(condition_ra.val());
 }
+function addBranch(branch) {
+	$('.'+branch).show();
+	$('.'+branch+'_invert').hide();
+}
