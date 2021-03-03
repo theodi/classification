@@ -9,25 +9,3 @@ function toggleDrag() {
     document.getElementById("decision-tree-wrapper").classList.remove("draggable","drag-drop"); 
   }
 }
-function selectSet(set) {
-	document.getElementById("instructions-set").style.display = "none";
-	document.getElementById("instructions-tab").classList.remove("selected");
-	document.getElementById("training-set").style.display = "none";
-	document.getElementById("training-tab").classList.remove("selected");
-	document.getElementById("test-set").style.display = "none";
-	document.getElementById("test-tab").classList.remove("selected");
-	document.getElementById("evaluation-set").style.display = "none";
-	document.getElementById("evaluation-tab").classList.remove("selected");
-
-	document.getElementById(set+"-set").style.display = "block";
-	document.getElementById(set+"-tab").classList.add("selected");	
-}
-function addBranch(branch) {
-	$('.'+branch).show();
-	$('.'+branch+'_invert').hide();
-}
-window.addEventListener('keydown', function (e) {
-    if ( e.key == "^" ) {
-        $(".model-button").show();
-    }
-}, false); 
