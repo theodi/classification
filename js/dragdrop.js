@@ -95,8 +95,8 @@ interact('.draggable')
         return parseInt($(e).css('z-index')) || 1;
       }));
       // bring to front
-      target.style.zIndex = maxZ + 1;
-      target.style.position = 'relative';
+      target.style.zIndex = maxZ + 10000;
+      target.style.position = 'absolute';
 
       // keep the dragged position in the data-x/data-y attributes
       x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,

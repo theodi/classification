@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Nunito:wght@400&display=swap');
+
+
 @font-face {
   font-family: "Summer";
   src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/Summer%20Font%20Regular.woff);
@@ -20,7 +23,7 @@
   --background: #222;
 }
 body {
-  font: 32px/1.2 "Summer";
+  font: 32px/1.2 'Nunito', sans-serif;
   margin: 5px;
   background-color: var(--background);
   color: white;
@@ -29,6 +32,7 @@ body {
     float: right;
     width: 150px;
     margin-right: 10px;
+    margin-top: 20px;
 }
 #decision-tree-wrapper {
   display: inline-block;
@@ -41,10 +45,23 @@ body {
   color: black;
 }
 #cards-wrapper {
-  max-width: 468px;
+  max-width: 470px;
   display: inline-block;
-  z-index: 1000;
 }
 a {
   color: inherit;
+}
+
+.container-main {
+  padding-top: 200px;
+ }
+
+.header {
+  padding: 20px;
+}
+
+#scroll {
+  z-index: 1;
+  overflow: scroll;
+  height: 700px;
 }

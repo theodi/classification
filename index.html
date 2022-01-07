@@ -14,29 +14,33 @@
 </head>
 
 <body>
+  <div class='header'>
   <img src="img/learning-72-Pink-300px.png" class="logo"/>
-  <h3 style="padding: 0px;">Build and test your own decision tree model</h3>
+  <p class="title">Build and test your own decision tree model</p>
+  </div>
   <!-- main flex container -->
   <!-- cards -->
+  <div id="container-main">
   <div id="cards-wrapper">
-    <div class="switch-wrapper" style="text-align: right;">
+    <div class="switch-wrapper" style="text-align: left;">
       <tab id="instructions-tab" onClick="selectSet('instructions');">Instructions</tab>
       <tab id="training-tab" class="selected" onClick="selectSet('training');">Training set</tab>
-      <tab id="test-tab" onClick="selectSet('test');">Test set</tab>
-      <tab id="evaluation-tab" onClick="selectSet('evaluation');">Evaluation set</tab>
     </div>
     <div id="instructions-set" class='invisbox-small' style="display: none;">
-      <h4>Classification Game</h4>
+      <h3>Classification Game</h3>
       <p>Your challenge is to create a decision tree that you think can successfully classify properties as either being in New York or San Francisco. Your decision must be based upon a limited number of characteristics.</p>
       <h4>Building your decision tree</h4>
       <p>In order to help build your decision tree, you have been provided a <a href="#" onClick="selectSet('training');" style="text-decoration: underline;">training set</a> with details of 10 properties in San Francisco and 10 in New York.  Use the data to decide on your factors and boundaries that you think will solve the challenge. You can also download the training set as CSV if you wish to do some analysis of the data in Excel. You can also drag and drop the cards around the screen.</p>
-      <h4>Buttons</h4>
-      <p><b>Run model: </b> Try your tree with the cards.</p>
-      <p><b>Reset: </b> Moves the cards back into the panel after an evaluation.</p> 
+      <h4>Buttons:</h4>
+      <p><strong>Run model: </strong> 
+        Try your tree with the cards.</p>
+      <p><strong>Reset: </strong> 
+        Moves the cards back into the panel after an evaluation.</p> 
       <h4>Evaluating your decision tree</h4>
       <p>Use the <a href="#" onClick="selectSet('evaluation');" style="text-decoration: underline;">evaluation set</a> to see if your tree works. You can select your own set of evaluation cards or generate 20 random cards. </p>
       <p>Good luck!</p>
     </div>
+    <div id="scroll">
     <div id='training-set' class='invisbox-small'>
       <div id="buttons" style="width: 100%">
         <button type="button" name="getTrainingDataCSV"><a id="groupcsv" href="data/csvs/Group_1.csv">Download cards (csv)</a></button>
@@ -45,29 +49,12 @@
         <button type="button" class="model-button" name="runTrainingData" onClick="sortCards(cards.trainingSet,'b');">Run model</button>
       </div>
     </div>
-    <div id='test-set' class="invisbox-small" style="display: none;">
-      <div id="buttons" style="width: 100%">
-        <button type="button" name="evaluation-button" onClick="startInputPurple();">Add card</button>
-        <button type="button" id="fill-purples" name="fill-button" onClick="getRandomPurples(20);">Fill random</button>
-        <button type="button" id="remove-purples" name="remove-button" onClick="removeCards(cards.testSet,'p');" style="display: none;">Remove all</button>
-        <button type="button" name="returnTrainingData" onClick="returnCards(cards.testSet,'test-set','p');">Reset</button>
-        <button type="button" class="model-button" name="runEvaluationData" onClick="sortCards(cards.testSet,'p');">Run model</button>
-      </div>
-    </div>
-    <div id='evaluation-set' class="invisbox-small" style="display: none;">
-      <div id="buttons" style="width: 100%">
-        <button type="button" name="evaluation-button" onClick="startInput();">Add card</button>
-        <button type="button" id="fill-reds" name="fill-button" onClick="getRandomReds(20);">Fill random</button>
-        <button type="button" id="remove-reds" name="remove-button" onClick="removeCards(cards.evaluationSet,'r');" style="display: none;">Remove all</button>
-        <button type="button" name="returnTrainingData" onClick="returnCards(cards.evaluationSet,'evaluation-set','r');">Reset</button>
-        <button type="button" class="model-button" name="runEvaluationData" onClick="sortCards(cards.evaluationSet,'r');">Run model</button>
-      </div>
     </div>
   </div>
   
   <div class="invisbox-big" id="decision-tree-wrapper">
     <div class="switch-wrapper" style="text-align: right;">
-      <span style="color:white;">Enable drag</span>
+      <span class="smalll-font" style="color:white;">Enable drag</span>
       <label class="switch" value="Enable Drag">
         <input id="myCheck" type="checkbox" onclick="toggleDrag()">
         <span class="slider round"></span>
@@ -102,11 +89,11 @@
                 <!-- ROW 2 -->
                 <div class="flex-container arrows">
                   <div class="condition-left" style="width:100%;">
-                    <img src="../classification/elements/neat-arrow-left.svg" class="arrow"/>
+                    <img src="../elements/neat-arrow-left.svg" class="arrow"/>
                   </div>
                   <div class="invisbox-tiny"></div>
                   <div class="condition-right" style="width:100%;">
-                    <img src="../classification/elements/neat-arrow-right.svg" class="arrow"/>
+                    <img src="../elements/neat-arrow-right.svg" class="arrow"/>
                   </div>
                 </div>
                 <div class="flex-container conditions">
@@ -130,11 +117,11 @@
                 <!-- ROW 4 -->
                 <div class="flex-container">
                   <div style="width:100%">
-                    <textarea name="notes3" rows="1" style="width: 95%;">Write your notes here</textarea>
+                    <textarea name="notes3" rows="1" placeholder="Write your notes here" style="width: 95%;"></textarea>
                   </div>
                   <div class="invisbox-tiny"></div>
                   <div style="width:100%">
-                    <textarea name="notes3" rows="1" style="width: 95%;">Write your notes here</textarea>
+                    <textarea name="notes3" rows="1" placeholder="Write your notes here" style="width: 95%;">Write your notes here</textarea>
                   </div>
                 </div>
                 <!-- SET 2 -->
@@ -354,6 +341,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 </body>
 <script src="js/dragdrop.js"></script>
