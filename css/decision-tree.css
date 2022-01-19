@@ -3,7 +3,7 @@ input,
 textarea, 
 select {
   font-family: inherit;
-  font-size: 40%;
+  font-size: 60%;
   color: darkslategray;
   background: var(--bginput);
   outline: darkgray;
@@ -12,7 +12,6 @@ select {
   margin: 4px;
   padding: 4px;
 }
-
 
 .decision_l, .decision_r, .decision_ll, .decision_lr, .decision_rl, .decision_rr {
   display: none;
@@ -248,10 +247,9 @@ select {
 }
 
 .container {
-  height: 700px;
   max-width: 1020px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 6.5rem;
   background-color: var(--bgbody);
 }
 
