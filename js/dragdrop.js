@@ -82,7 +82,6 @@ interact('.draggable')
     // call this function on every dragend event
     onend: function (event) {
     }
-
   });
 
   function dragMoveListener (event) {
@@ -136,5 +135,20 @@ interact('.dropzone').dropzone({
     tilesUsed.push(event.relatedTarget.id),
     console.log(event.relatedTarget.id
       + ' was dropped into '
-      + event.target.id);}
+      + event.target.id);
+    console.log("hello!");
+    if (event.target.classList.contains("snapzone")) {
+      console.log('in a snapzone');
+      var x = event.relatedTarget.getAttribute('data-x');
+      var y = event.relatedTarget.getAttribute('data-y'); 
+      if (x>100 || x<100) {
+        x = Math.round(x/156)*156;
+        y = Math.round(y/225)*225;
+      }
+      event.relatedTarget.setAttribute('data-x',x);
+      event.relatedTarget.setAttribute('data-y',y);
+      event.relatedTarget.style.webkitTransform =
+      event.relatedTarget.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+    }
+  }
 });
