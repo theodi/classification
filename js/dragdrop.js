@@ -13,7 +13,9 @@ var z_index = 1000;
       snap: {
         targets: [pos],
         range: Infinity,
-        relativePoints: [{ x: 0.5, y: 0.5 }],
+        relativePoints: [
+          { x: 0.5, y: 0.5 }
+        ],
         endOnly: true,
       },
       onstart: function (event) {
@@ -24,8 +26,8 @@ var z_index = 1000;
           x: rect.left + rect.width / 2,
           y: rect.top + rect.height / 2,
         };
-
         if (startpos[event.target.id] == undefined) {
+          console.log(pos)
           startpos[event.target.id] = pos;
         }
         event.interactable.draggable({
@@ -51,7 +53,7 @@ var z_index = 1000;
         target.style.webkitTransform = target.style.transform =
           "translate(" + x + "px, " + y + "px)";
 
-        // update the posiion attributes
+        // update the position attributes
         target.setAttribute("data-x", x);
         target.setAttribute("data-y", y);
         target.classList.add("getting--dragged");
@@ -67,7 +69,7 @@ var z_index = 1000;
 
       ondropactivate: function (event) {
         event.target.classList.add("can--drop");
-      },
+      }, 
       ondragenter: function (event) {
         console.log("eed", event.relatedTarget.id);
         var draggableElement = event.relatedTarget;

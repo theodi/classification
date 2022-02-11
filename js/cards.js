@@ -74,9 +74,11 @@ function selectSet(set) {
     document.getElementById("test-tab").classList.remove("selected");
     document.getElementById("evaluation-set").style.display = "none";
     document.getElementById("evaluation-tab").classList.remove("selected");
-
     document.getElementById(set+"-set").style.display = "block";
-    document.getElementById(set+"-tab").classList.add("selected");  
+    document.getElementById(set+"-tab").classList.add("selected"); 
+
+
+    
 }
 
 window.addEventListener('keydown', function (e) {
