@@ -34,11 +34,10 @@ tab {
   border-right: 1px solid white;
   padding-left: 5px;
   padding-right: 5px;
-  padding-bottom: 1px;
   cursor: pointer;
 	font-size: 80%;
 	padding-inline: 10px;
-	box-shadow: 2px -2px 1px 0px #888
+	box-shadow: 1px -1px 0.5px 0px #888
 }
 
 tab button:hover,
@@ -59,9 +58,12 @@ tab button.active {
 }
 
 #training-set {
-  min-width: 1400px;
-  
-  border: 1px solid #0bf6;
+    min-width: 1400px;
+    border: 3px solid #0bf6;
+    border-radius: 5px;
+    padding: 4px;
+	margin-right: -2px;
+	padding-left: 17px;
 }
 #evaluation-set {
   min-width: 1400px;
@@ -110,6 +112,7 @@ card {
 	padding-top: 6px;
 	padding-bottom: 6px;
 	height: 6.6em;
+	vertical-align: top;
 }
 h1 {
 	margin: 0px;
@@ -180,3 +183,7 @@ td {
     filter: brightness(0.5) invert(0.5)  !important;
 }
 
+
+form {
+	vertical-align: 0;
+}

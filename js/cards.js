@@ -9,6 +9,10 @@ var pCount = 0;
 var pDone = [];
 var maxCount = 20;
 
+
+
+
+
 /* Page functions */
 
 function getUrlVars() {
@@ -74,11 +78,9 @@ function selectSet(set) {
     document.getElementById("test-tab").classList.remove("selected");
     document.getElementById("evaluation-set").style.display = "none";
     document.getElementById("evaluation-tab").classList.remove("selected");
+
     document.getElementById(set+"-set").style.display = "block";
-    document.getElementById(set+"-tab").classList.add("selected"); 
-
-
-    
+    document.getElementById(set+"-tab").classList.add("selected");  
 }
 
 window.addEventListener('keydown', function (e) {
@@ -209,10 +211,7 @@ function removeCard(id,cardset,color){
 /* Render card functions */
 
 function renderCard(data,count,color) {
-	$('#training-set').append('<card class="draggable drag-drop" id="b'+count+'"><h1 class="target">'+data.city+'</h1><h1 class="number">#'+count+'</h1><image src="img/house.png"></image><table class="'+color+'"><tr><td class="attribute">Bathrooms</td><td class="value">'+data.bath+'</td></tr><tr><td class="attribute">Bedrooms</td><td class="value">'+data.beds+'</td></tr><tr><td class="attribute">Year built</td><td class="value">'+data.year_built+'</td></tr><tr><td class="attribute">Elevation</td><td class="value">'+formatNumber(data.elevation)+'ft</td></tr><tr><td class="attribute">Square Footage</td><td class="value">'+formatNumber(data.sqft)+'</td></tr><tr><td class="attribute">Price</td><td class="value">$'+formatNumber(data.price)+'</td></tr><tr><td class="attribute">Price per sqft</td><td class="value">$'+formatNumber(data.price_per_sqft)+'</td></tr></table></card>');
-}
-function renderDummyCard() {
-	$('#training-set').append('<card class="drag-drop dropzone card_dropzone"></card>');
+	$('#training-set').append('<card draggable="true" class="draggable drag-drop" id="b'+count+'"><h1 class="target">'+data.city+'</h1><h1 class="number">#'+count+'</h1><image src="img/house.png"></image><table class="'+color+'"><tr><td class="attribute">Bathrooms</td><td class="value">'+data.bath+'</td></tr><tr><td class="attribute">Bedrooms</td><td class="value">'+data.beds+'</td></tr><tr><td class="attribute">Year built</td><td class="value">'+data.year_built+'</td></tr><tr><td class="attribute">Elevation</td><td class="value">'+formatNumber(data.elevation)+'ft</td></tr><tr><td class="attribute">Square Footage</td><td class="value">'+formatNumber(data.sqft)+'</td></tr><tr><td class="attribute">Price</td><td class="value">$'+formatNumber(data.price)+'</td></tr><tr><td class="attribute">Price per sqft</td><td class="value">$'+formatNumber(data.price_per_sqft)+'</td></tr></table></card>');
 }
 
 function renderRedCard(data,count,color) {
@@ -308,15 +307,3 @@ function sortCard(card,currentPosition) {
         }
     }
 }
-
-let card = querySelector('#card');
-
-
-card.addEventListener("click", bringToFront);
-
-
-function bringToFront() {
-   this.style.zIndex = "900";
-}
-
-bringToFront()
