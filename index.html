@@ -11,7 +11,7 @@
   <script src="js/d3.v5.min.js"></script>
   <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.0.2/interact.min.js'></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://unpkg.com/sortablejs-make/Sortable.min.js"></script>
+  <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
   <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery-sortablejs@latest/jquery-sortable.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -49,7 +49,9 @@
         <button type="button" name="getTrainingDataPDF"><a id="grouppdf" href="data/Group_1.pdf">Download cards (pdf)</a></button>
         <button type="button" name="returnTrainingData" onClick="returnCards(cards.trainingSet,'training-set','b');">Reset</button>
         <button type="button" class="model-button" name="runTrainingData" onClick="sortCards(cards.trainingSet,'b');">Run model</button>
+       
       </div>
+       <div id="area"></div>
     </div>
     <div id='test-set' class="invisbox-small" style="display: none;">
       <div id="buttons" style="width: 100%">
