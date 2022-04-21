@@ -80,7 +80,9 @@ function selectSet(set) {
 }
 
 window.addEventListener('keydown', function (e) {
-    if ( e.key == "^" ) {
+    console.log(e.key)
+    if ( e.key == "=" ) {
+        
         $(".model-button").show();
     }
 }, false);
