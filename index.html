@@ -69,6 +69,14 @@
         <button type="button" name="returnTrainingData" onClick="returnCards(cards.evaluationSet,'evaluation-set','r');">Reset</button>
         <button type="button" class="model-button" name="runEvaluationData" onClick="sortCards(cards.evaluationSet,'r');">Run model</button>
       </div>
+      <div id="results" class="results">
+        <table>
+          <tr><th>Actor</th><th>Confidence<br/>(from training set)</th><th>Result<br/>(from evaluation set)</th></tr>
+          <tr><td>Your model</td><td id="confidence-user"></td><td id="result-user"></td></tr>
+          <tr><td>Machine only model</td><td id="confidence-stoopid-ai"></td><td id="result-stoopid-ai"></td></tr>
+          <tr><td>Human+ML model</td><td id="confidence-hybrid"></td><td id="result-hybrid"></td></tr>
+        </table>
+      </div>
     </div>
   </div>
   
@@ -111,7 +119,7 @@
                   <div class="condition-left" style="width:100%;">
                     <img src="../classification/elements/neat-arrow-left.svg" class="arrow"/>
                   </div>
-                  <div class="invisbox-tiny"></div>
+                  <div class="invisbox-tiny" style="width:14%;"></div>
                   <div class="condition-right" style="width:100%;">
                     <img src="../classification/elements/neat-arrow-right.svg" class="arrow"/>
                   </div>
@@ -121,27 +129,29 @@
                     <label for="condition_a">&lt;=</label>
                     <input type="number" placeholder="condition" id="condition_a" name="condition_a" style="max-width: 100px;">
                   </div>
-                  <div class="invisbox-tiny">
+                  <div class="invisbox-tiny" style="width:14%;">
                   </div>
                   <div style="width:100%;">
-                    <label for="condition_b" style="font-size: 1.4em;">&gt;</label>
+                    <label for="condition_b">&gt;</label>
                     <input disabled type="number" placeholder="condition" id="condition_b" name="condition_b" style="max-width: 100px; background-color: silver;">
                   </div>
                 </div>
                 <!-- ROW 3 ................................ -->
                 <div class="flex-container">
                   <div id="box_l" class="cardbox" style="background-color: silver; width:100%;"></div>
-                  <div class="invisbox-tiny"></div>
+                  <div class="invisbox-tiny" style="width:14%;"></div>
                   <div id="box_r" class="cardbox" style="background-color: silver; width:100%;"></div>
                 </div>
                 <!-- ROW 4 -->
                 <div class="flex-container">
                   <div style="width:100%">
-                    <textarea name="notes3" rows="1" style="width: 95%;">Write your notes here</textarea>
+                    <div class="prediction"><label for="prediction_box_l">Prediction</label><select id="prediction_box_l"><option value="?">?</option><option value="New York">New York</option><option value="San Francisco">San Francisco</option></select></div>
+                    <textarea name="notes3" rows="1" style="width: 95%;" placeholder="Write your notes here"></textarea>
                   </div>
-                  <div class="invisbox-tiny"></div>
+                  <div class="invisbox-tiny" style="width:14%;"></div>
                   <div style="width:100%">
-                    <textarea name="notes3" rows="1" style="width: 95%;">Write your notes here</textarea>
+                    <div class="prediction"><label for="prediction_box_r">Prediction</label><select id="prediction_box_r"><option value="?">?</option><option value="New York">New York</option><option value="San Francisco">San Francisco</option></select></div>
+                    <textarea name="notes3" rows="1" style="width: 95%;" placeholder="Write your notes here"></textarea>
                   </div>
                 </div>
                 <!-- SET 2 -->
@@ -223,18 +233,22 @@
                 <!-- ROW 8 -->
                 <div class="flex-container">
                   <div class="invisbox-fill">
-                    <textarea class="decision_l" name="notes3" rows="2" style="width: 95%;">Write your notes here</textarea>
+                    <div class="prediction"><label class="decision_l" for="prediction_box_ll">Prediction</label><select class="decision_l" id="prediction_box_ll"><option value="?">?</option><option value="New York">New York</option><option value="San Francisco">San Francisco</option></select></div>
+                    <textarea class="decision_l" name="notes3" rows="2" style="width: 95%;" placeholder="Write your notes here"></textarea>
                   </div>
                   <div class="invisbox-fill">
-                    <textarea class="decision_l" name="notes4" rows="2" style="width: 95%;">Write your notes here</textarea>
+                    <div class="prediction"><label class="decision_l" for="prediction_box_lr">Prediction</label><select class="decision_l" id="prediction_box_lr"><option value="?">?</option><option value="New York">New York</option><option value="San Francisco">San Francisco</option></select></div>
+                    <textarea class="decision_l" name="notes4" rows="2" style="width: 95%;" placeholder="Write your notes here"></textarea>
                   </div>
                   <div class="invisbox-tiny">
                   </div>
                   <div class="invisbox-fill">
-                    <textarea class="decision_r" name="notes5" rows="2" style="width: 95%;">Write your notes here</textarea>
+                    <div class="prediction"><label class="decision_r" for="prediction_box_rl">Prediction</label><select class="decision_r" id="prediction_box_rl"><option value="?">?</option><option value="New York">New York</option><option value="San Francisco">San Francisco</option></select></div>
+                    <textarea class="decision_r" name="notes5" rows="2" style="width: 95%;" placeholder="Write your notes here"></textarea>
                   </div>
                   <div class="invisbox-fill">
-                    <textarea class="decision_r" name="notes6" rows="2" style="width: 95%;">Write your notes here</textarea>
+                    <div class="prediction"><label class="decision_r" for="prediction_box_rr">Prediction</label><select class="decision_r" id="prediction_box_rr"><option value="?">?</option><option value="New York">New York</option><option value="San Francisco">San Francisco</option></select></div>
+                    <textarea class="decision_r" name="notes6" rows="2" style="width: 95%;" placeholder="Write your notes here"></textarea>
                   </div>
                 </div>
                 <!-- SET 3 -->
@@ -258,6 +272,8 @@
                       </condition>
                     </div>
                     <div id="box_lll" class="cardbox-thin decision_ll" style="background-color: silver; width:100%; height: 300px;"></div>
+                    <div class="prediction"><label class="decision_ll" for="prediction_box_lll">Prediction</label><select class="decision_ll" id="prediction_box_lll"><option value="?">?</option><option value="New York">New York</option><option value="San Francisco">San Francisco</option></select></div>
+                    <textarea class="decision_ll" name="notes3" rows="2" style="width: 95%;" placeholder="Write your notes here"></textarea>
                     <div class="condition">
                       <condition class="decision_ll">
                         <label for="condition_llb">&gt;</label>
@@ -265,7 +281,8 @@
                       </condition>
                     </div>
                     <div id="box_llr" class="cardbox-thin decision_ll" style="background-color: silver; width:100%; height: 300px;"></div>
-                    <textarea class="decision_ll" name="notes3" rows="2" style="width: 95%;">Write your notes here</textarea>
+                    <div class="prediction"><label class="decision_ll" for="prediction_box_llr">Prediction</label><select class="decision_ll" id="prediction_box_llr"><option value="?">?</option><option value="New York">New York</option><option value="San Francisco">San Francisco</option></select></div>
+                    <textarea class="decision_ll" name="notes3" rows="2" style="width: 95%;" placeholder="Write your notes here"></textarea>
                   </div>
                   <div class="invisbox-fill" style="text-align: center;">
                     <button type="button" name="Add Branch" class="add-branch decision_l decision_lr_invert" onclick="addBranch('decision_lr');">Add Branch</button>
@@ -286,6 +303,8 @@
                       </condition>
                     </div>
                     <div id="box_lrl" class="cardbox-thin decision_lr" style="background-color: silver; width:100%; height: 300px;"></div>
+                    <div class="prediction"><label class="decision_lr" for="prediction_box_lrl">Prediction</label><select class="decision_lr" id="prediction_box_lrl"><option value="?">?</option><option value="New York">New York</option><option value="San Francisco">San Francisco</option></select></div>
+                    <textarea class="decision_lr" name="notes3" rows="2" style="width: 95%;" placeholder="Write your notes here"></textarea>
                     <div class="condition">
                       <condition class="decision_lr">
                         <label for="condition_lrb">&gt;</label>
@@ -293,7 +312,8 @@
                       </condition>
                     </div>
                     <div id="box_lrr" class="cardbox-thin decision_lr" style="background-color: silver; width:100%; height: 300px;"></div>
-                    <textarea class="decision_lr" name="notes3" rows="2" style="width: 95%;">Write your notes here</textarea>
+                    <div class="prediction"><label class="decision_lr" for="prediction_box_lrr">Prediction</label><select class="decision_lr" id="prediction_box_lrr"><option value="?">?</option><option value="New York">New York</option><option value="San Francisco">San Francisco</option></select></div>
+                    <textarea class="decision_lr" name="notes3" rows="2" style="width: 95%;" placeholder="Write your notes here"></textarea>
                   </div>
                   <div class="invisbox-tiny">
                   </div>
@@ -316,6 +336,8 @@
                       </condition>
                     </div>
                     <div id="box_rll" class="cardbox-thin decision_rl" style="background-color: silver; width:100%; height: 300px;"></div>
+                    <div class="prediction"><label class="decision_rl" for="prediction_box_rll">Prediction</label><select class="decision_rl" id="prediction_box_rll"><option value="?">?</option><option value="New York">New York</option><option value="San Francisco">San Francisco</option></select></div>
+                    <textarea class="decision_rl" name="notes3" rows="2" style="width: 95%;" placeholder="Write your notes here"></textarea>
                     <div class="condition">
                       <condition class="decision_rl">
                         <label for="condition_rlb">&gt;</label>
@@ -323,7 +345,8 @@
                       </condition>
                     </div>
                     <div id="box_rlr" class="cardbox-thin decision_rl" style="background-color: silver; width:100%; height: 300px;"></div>
-                    <textarea class="decision_rl" name="notes3" rows="2" style="width: 95%;">Write your notes here</textarea>
+                    <div class="prediction"><label class="decision_rl" for="prediction_box_rlr">Prediction</label><select class="decision_rl" id="prediction_box_rlr"><option value="?">?</option><option value="New York">New York</option><option value="San Francisco">San Francisco</option></select></div>
+                    <textarea class="decision_rl" name="notes3" rows="2" style="width: 95%;" placeholder="Write your notes here"></textarea>
                   </div>
                   <div class="invisbox-fill" style="text-align: center;">
                     <button type="button" name="Add Branch" class="add-branch decision_r decision_rr_invert" onclick="addBranch('decision_rr');">Add Branch</button>
@@ -344,6 +367,8 @@
                       </condition>
                     </div>
                     <div id="box_rrl" class="cardbox-thin decision_rr" style="background-color: silver; width:100%; height: 300px;"></div>
+                    <div class="prediction"><label class="decision_rr" for="prediction_box_rrl">Prediction</label><select class="decision_rr" id="prediction_box_rrl"><option value="?">?</option><option value="New York">New York</option><option value="San Francisco">San Francisco</option></select></div>
+                    <textarea class="decision_rr" name="notes3" rows="2" style="width: 95%;" placeholder="Write your notes here"></textarea>
                     <div class="condition">
                       <condition class="decision_rr">
                         <label for="condition_rrb">&gt;</label>
@@ -351,7 +376,8 @@
                       </condition>
                     </div>
                     <div id="box_rrr" class="cardbox-thin decision_rr" style="background-color: silver; width:100%; height: 300px;"></div>
-                    <textarea class="decision_rr" name="notes3" rows="2" style="width: 95%;">Write your notes here</textarea>
+                    <div class="prediction"><label class="decision_rr" for="prediction_box_rrr">Prediction</label><select class="decision_rr" id="prediction_box_rrr"><option value="?">?</option><option value="New York">New York</option><option value="San Francisco">San Francisco</option></select></div>
+                    <textarea class="decision_rr" name="notes3" rows="2" style="width: 95%;" placeholder="Write your notes here"></textarea>
                   </div>
                 </div>
               </div>
@@ -385,6 +411,25 @@
     $('#condition_a').on('change', onchange);
     $('#condition_la').on('change', onchange);
     $('#condition_ra').on('change', onchange);
+    $('#condition_rla').on('change', onchange);
+    $('#condition_rra').on('change', onchange);
+    $('#condition_lra').on('change', onchange);
+    $('#condition_lla').on('change', onchange);
+
+    $('#prediction_box_l').on('change', updatePredictions);
+    $('#prediction_box_r').on('change', updatePredictions);
+    $('#prediction_box_ll').on('change', updatePredictions);
+    $('#prediction_box_lr').on('change', updatePredictions);
+    $('#prediction_box_rl').on('change', updatePredictions);
+    $('#prediction_box_rr').on('change', updatePredictions);
+    $('#prediction_box_lll').on('change', updatePredictions);
+    $('#prediction_box_llr').on('change', updatePredictions);
+    $('#prediction_box_lrl').on('change', updatePredictions);
+    $('#prediction_box_lrr').on('change', updatePredictions);
+    $('#prediction_box_rll').on('change', updatePredictions);
+    $('#prediction_box_rlr').on('change', updatePredictions);
+    $('#prediction_box_rrl').on('change', updatePredictions);
+    $('#prediction_box_rrr').on('change', updatePredictions);
   });
 </script>
 </html>

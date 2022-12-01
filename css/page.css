@@ -80,3 +80,13 @@ body {
 a {
   color: inherit;
 }
+.results table,.results tr,.results th,.results td {
+  font-size: 1em;
+  color:white;
+  text-align: center;
+}
+.results th,.results td {
+  border: 1px solid white;
+  border-collapse: collapse;
+  padding: 0.2em;
+}

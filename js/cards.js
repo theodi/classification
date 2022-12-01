@@ -8,6 +8,8 @@ var rDone = [];
 var pCount = 0;
 var pDone = [];
 var maxCount = 20;
+var predictions = {};
+var confidence = 0;
 
 /* Page functions */
 
@@ -66,6 +68,9 @@ function processNumberPurple(val) {
 }
 
 function selectSet(set) {
+    if (set=="evaluation" && confidence==0) {
+        alert("Please make sure you have clicked 'run model' against the training set prior to evaluation.");
+    }
     document.getElementById("instructions-set").style.display = "none";
     document.getElementById("instructions-tab").classList.remove("selected");
     document.getElementById("training-set").style.display = "none";
@@ -80,7 +85,6 @@ function selectSet(set) {
 }
 
 window.addEventListener('keydown', function (e) {
-    console.log(e.key)
     if ( e.key == "=" ) {
         
         $(".model-button").show();
@@ -273,8 +277,18 @@ function sortCards(cardset,color) {
         setTimeout(function() { 
             animateCard(sortCard(card,currentPosition),color);
         },interval);
-        interval += 800;
+        interval += 200;
     });
+    if (color=="b") {
+        setTimeout(function() {
+            getPredictions(cardset);
+        },5000);
+    }
+    if (color=="r") {
+        setTimeout(function() {
+            getResult(cardset);
+        },5000);
+    }
 }
 
 function sortCard(card,currentPosition) {
@@ -304,4 +318,115 @@ function sortCard(card,currentPosition) {
             return card;
         }
     }
+}
+
+function setElementToOption(elementid,option) {
+    var select = document.getElementById(elementid);
+    for(var i = 0;i < select.options.length;i++){
+        if(select.options[i].value == option ){
+            select.options[i].selected = true;
+        }
+    }
+}
+
+function getPredictions(cardset) {
+    predictions = {};
+    var right = 0;
+    cardset.forEach(function(card,value,index) {
+        if (!predictions[card.box]) {
+            predictions[card.box] = {};
+            predictions[card.box]["New York"] = 0;
+            predictions[card.box]["San Francisco"] = 0;
+        } 
+        predictions[card.box][card.city] += 1;
+    });
+    for (const [box, values] of Object.entries(predictions)) {
+        if (values["New York"] > values["San Francisco"]) { 
+            predictions[box]["prediction"] = "New York";
+            setElementToOption("prediction_box_"+box,"New York");
+            right += values["New York"];
+        } else if (values["New York"] < values["San Francisco"]) {
+            predictions[box]["prediction"] = "San Francisco";
+            setElementToOption("prediction_box_"+box,"San Francisco");
+            right += values["San Francisco"];
+        } else {
+            predictions[box]["prediction"] = "?";
+            setElementToOption("prediction_box_"+box,"?");
+        }   
+    }
+    confidence = (right / 20) * 100;
+    $('.prediction').show();
+    document.getElementById("confidence-user").innerHTML = confidence + "%";
+    if (group == 1) {
+        document.getElementById("confidence-stoopid-ai").innerHTML = "100%";
+        document.getElementById("confidence-hybrid").innerHTML = "90%";
+    }
+}
+
+function updateConfidence(cardset) {
+    var right = 0;
+    for (const [box, values] of Object.entries(predictions)) {
+        right += values[values["prediction"]];
+    }
+    confidence = (right / 20) * 100;
+    document.getElementById("confidence-user").innerHTML = confidence + "%";
+}
+
+function getResult(cardset) {
+    console.log("Group = " + group);
+    var right = 0;
+    var targets = ["New York","San Francisco"]
+    cardset.forEach(function(card,value,index) {
+        if (targets[card.target] == predictions[card.box]["prediction"]) {
+            right +=1;
+        }
+    });
+    result = (right / 20) * 100;
+    document.getElementById("result-user").innerHTML = Math.round(result) + "%";
+    if (group == 1) {
+        getAIResult_Hybrid_1(cardset);
+        getAIResult_Stoopid_1(cardset);
+    } 
+}
+
+function getAIResult_Hybrid_1(cardset) {
+    var right = 0;
+    var targets = ["New York","San Francisco"]
+    cardset.forEach(function(card,value,index) {
+        if (card.price_per_sqft <= 875 && card.target == 1) {
+            right += 1;
+        }
+        if (card.price_per_sqft > 875) {
+            if (card.elevation <= 28 && card.target == 0) {
+                right += 1;
+            } else if (card.elevation > 28 && card.target == 1) {
+                right += 1;
+            }
+        }
+    });
+    result = (right / 20) * 100;
+    document.getElementById("result-hybrid").innerHTML = Math.round(result) + "%";
+}
+
+function getAIResult_Stoopid_1(cardset) {
+    var right = 0;
+    var targets = ["New York","San Francisco"]
+    cardset.forEach(function(card,value,index) {
+        if (card.price_per_sqft <= 875 && card.target == 1) {
+            right += 1;
+        }
+        if (card.price_per_sqft > 875) {
+            if (card.year_built <= 2003.5 && card.target == 0) {
+                right += 1;
+            } else if (card.year_built > 2003.5) {
+                if (card.bath <= 1.5 && card.target == 0) {
+                    right += 1;
+                } else if (card.bath > 1.5 && card.target == 1) {
+                    right += 1;
+                }
+            }
+        }
+    });
+    result = (right / 20) * 100;
+    document.getElementById("result-stoopid-ai").innerHTML = Math.round(result) + "%";
 }

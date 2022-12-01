@@ -12,12 +12,24 @@ select {
   margin: 4px;
   padding: 4px;
 }
-
+label {
+  font-size: 0.8em;
+}
+.prediction {
+  display: none;
+}
+.prediction label {
+  font-size: 0.5em;
+}
+.prediction input {
+  font-size: 0.5em;
+  width: 6.5em;
+}
 .decision_l, .decision_r, .decision_ll, .decision_lr, .decision_rl, .decision_rr {
   display: none;
 }
 .condition label {
-  font-size: 1.4em;
+  font-size: 0.8em;
 }
 .condition input {
   max-width: 100px;
@@ -261,9 +273,7 @@ select {
 }
 .flex-container .invisbox-tiny {
   background-color: var(--bgbody);
-  min-width: 14.25%;
-  width: 14.25%;
-  max-width: 14.25%;
+  width: 4%;
   text-align: center;
   padding: 0px;
   align-items: center;
